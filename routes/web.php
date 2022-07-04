@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ModelsController;
+use App\Http\Controllers\User\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::any('/',[HomeController::class,'index']);
+Route::any('login',[HomeController::class,'login_form']);
+Route::any('register',[HomeController::class,'register_form']);
+Route::any('models',[ModelsController::class,'models']);
+Route::any('individual',[ModelsController::class,'individual']);
+Route::any('apply',[ModelsController::class,'apply']);
+Route::any('contact',[ModelsController::class,'contact']);
+Route::post('contact_form',[ModelsController::class,'contact_form']);

@@ -26,6 +26,11 @@ class User extends Authenticatable
         'avatar',
         'is_admin',
         'password',
+        'county',
+        'subcounty',
+        'district',
+        'location',
+        'village',
     ];
 
     /**
