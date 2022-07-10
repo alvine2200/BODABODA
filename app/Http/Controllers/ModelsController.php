@@ -20,6 +20,11 @@ class ModelsController extends Controller
         return view ('user.individualmodel');
     }
 
+    public function dashboard()
+    {
+        return view('dashboards.admin');
+    }
+
     public function apply()
     {
         return view('user.apply');
