@@ -23,13 +23,12 @@ class User extends Authenticatable
         'email',
         'id_number',
         'location',
-        'avatar',
         'is_admin',
         'password',
         'county',
+        'phone',
         'subcounty',
         'district',
-        'location',
         'village',
     ];
 
@@ -51,4 +50,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
 }

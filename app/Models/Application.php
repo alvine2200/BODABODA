@@ -25,4 +25,9 @@ class Application extends Model
     {
         return $this->hasMany(Transaction::class);
     }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

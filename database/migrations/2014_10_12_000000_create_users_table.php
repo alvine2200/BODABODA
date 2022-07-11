@@ -20,14 +20,14 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->integer('id_number')->unique();
             $table->string('county');
+            $table->string('phone');
             $table->string('subcounty');
             $table->string('district');
             $table->string('location');
             $table->string('village');
-            $table->string('avatar');
-            $table->tinyInteger('is_admin');
+            $table->tinyInteger('is_admin')->default(0);
             $table->string('password');
-            $table->timestamp('email_verified_at')->nullable();            
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

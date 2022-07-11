@@ -20,8 +20,8 @@ return new class extends Migration
             $table->dateTime('dob');
             $table->string('national_id_copy');
             $table->string('driving_school_certificate');
-            $table->string('driving_school_status')->default('pass');
-            $table->string('generate_card')->default('yes');
+            $table->string('driving_school_status')->default('pending');
+            $table->string('generate_card')->default('pending');
             $table->timestamps();
         });
 

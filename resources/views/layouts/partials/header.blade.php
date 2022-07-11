@@ -46,7 +46,7 @@
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                 <span class="user-img"><i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
                 <span class="status online"></span></span>
-                <span>Username here</span>
+                <span>{{Auth::user()->username}}</span>
             </a>
 
             <div class="dropdown-menu">
@@ -64,7 +64,7 @@
                         {{ __('Logout') }}
                 </a>
 
-                <form id="logout-form" action="#" method="POST" class="d-none">
+                <form id="logout-form" action="/logout" method="POST" class="d-none">
                     @csrf
                 </form>
 
