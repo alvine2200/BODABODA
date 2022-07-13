@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ModelsController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\RiderController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Authentication\RegisterController;
 
@@ -31,6 +32,12 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('show/{id}',[RiderController::class,'show_application']);
     Route::post('post_application',[RiderController::class,'store_application']);
     Route::delete('delete_application/{id}',[RiderController::class,'delete_applications']);
+
+    //admin applications
+    Route::get('applications',[AdminController::class,'get_all_applications']);
+    Route::get('approve_driving_school/{id}',[AdminController::class,'approve_driving_school_status']);
+    Route::get('approve_generate_card/{id}',[AdminController::class,'approve_generate_card']);
+    Route::get('view_application/{id}',[AdminController::class,'view_application']);
 
     Route::any('models',[ModelsController::class,'models']);
     Route::any('individual',[ModelsController::class,'individual']);

@@ -11,9 +11,10 @@ use Illuminate\Support\Facades\Validator;
 class RiderController extends Controller
 {
     public function application()
-    {   
-        $application=Application::where('user_id',Auth::user()->id)->first();
+    {
         
+        $application=Application::where('user_id',Auth::user()->id)->first();
+
         return view('user.application',compact('application'));
     }
 
@@ -29,11 +30,11 @@ class RiderController extends Controller
             return back()->with('Validation Failed',$validator->errors());
         }
 
-        
+
 
         $validation=$request->only('national_id_copy','dob','user_id','driving_school_certificate','application_number');
 
-        
+
         $uniqueId= mt_rand(10000000,999999999);
         $validation['application_number']=$uniqueId;
 
@@ -44,7 +45,7 @@ class RiderController extends Controller
             $national=uniqid().$name;
             $file->move('pictures/applications',$national);
             $validation['national_id_copy']=$national;
-            
+
         }
         if($request->hasfile('driving_school_certificate'))
         {
@@ -71,11 +72,11 @@ class RiderController extends Controller
 
     public function show_application($id)
     {
-        $id=Application::findOrFail($id);
+        //$id_app=Application::findOrFail($id);
         $application=Application::where('user_id',Auth::user()->id)->first();
 
-        return view('user.application',compact('application','id'));
-    }    
+        return view('user.application',compact('application'));
+    }
 
-   
+
 }

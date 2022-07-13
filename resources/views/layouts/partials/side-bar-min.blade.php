@@ -18,7 +18,7 @@
                 </li>
                 <li class="submenu">
 
-                    <li><a href="{{url('apply')}}"> <i
+                    <li><a href="{{url('applications')}}"> <i
                                 class="la la-border-all"></i>
                                 <span>Apply</span>
                         </a>
@@ -35,7 +35,7 @@
                     </a>
                 </li>
 
-                
+
                 <!--check auth-->
                 <li class="menu-title">
                     <span>Transactions</span>
@@ -55,7 +55,7 @@
                     <a href="#"><i class="fa fa-tasks"></i>
                         <span>All queries</span>
                     </a>
-                </li> 
+                </li>
              @else
                 <li class="menu-title">
                     <span>Main</span>
@@ -76,14 +76,14 @@
                                 <span>Apply</span>
                         </a>
                     </li>
-               
+
                 <!--check auth-->
                 <li class="menu-title">
                     <span>Transactions</span>
                 </li>
                 <li class="submenu">
 
-                <li><a href="#"> 
+                <li><a href="#">
                     <i class="la la-border-all"></i>
                         <span>Transactions Records</span>
                     </a>
@@ -94,12 +94,12 @@
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-question"></i>
-                        <span>Support section</span> 
+                        <span>Support section</span>
                     </a>
                 </li>
 
              @endif
-             
+
             </ul>
         </div>
     </div>

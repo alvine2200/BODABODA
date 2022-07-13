@@ -108,7 +108,8 @@
                                 </tr>
                             </thead>
                             <tbody>                               
-                                @if($application)
+                                    @foreach ($applications as $application)                                     
+                                    
                                      <tr>
 
                                         <td>{{$application->id}}</td>
@@ -131,28 +132,32 @@
                                                     aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     @if (Auth::user()->is_admin == 1)
-                                                     <a class="dropdown-item" href="#"><i
-                                                            class="fa fa-check m-r-5"></i> Approve
-                                                        </a>
-                                                     @endif
-                                                     {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_application" ><i
-                                                        class="fa fa-check m-r-5"></i> Edit
-                                                    </a> --}}
+                                                    <a class="dropdown-item" href="{{url('view_application',$application->id)}}"><i
+                                                        class="fa fa-check m-r-5"></i> View
+                                                 </a>
+                                                     <a class="dropdown-item" href="{{url('approve_driving_school',$application->id)}}"><i
+                                                            class="fa fa-check m-r-5"></i> Approve Driving School Certificate
+                                                     </a>
+                                                     <a class="dropdown-item" href="{{url('approve_generate_card',$application->id)}}"><i
+                                                            class="fa fa-check m-r-5"></i> Approve Generate Card
+                                                     </a>
+                                                     @endif                                                     
                                                     {{-- <a class="dropdown-item" href="{{url('delete_application',$application->id)}}" data-toggle="modal" data-target="#edit_application" ><i
                                                         class="fa fa-trash-o m-r-5"></i> Delete
                                                     </a>  --}}
-                                                    <form action="/delete_application',$application->id" method="post"
+                                                    {{-- <form action="/delete_application',$application->id" method="post"
                                                         onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');">
                                                         @method('DELETE')
                                                         @csrf
                                                         <button type="submit" class="dropdown-item" href="#">
                                                             <i class="fa fa-trash-o m-r-5"></i> Delete</button>
-                                                    </form>
+                                                    </form> --}}
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                                @endif
+                                    @endforeach
+
 
                                     <div id="#" class="modal custom-modal fade" role="dialog">
                                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -205,9 +210,7 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     
-                                   
 
                             </tbody>
                         </table>
