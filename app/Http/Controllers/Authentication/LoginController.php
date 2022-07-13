@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Authentication;
 
+use App\Models\User;
+use App\Models\Support;
+use App\Models\Application;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +26,11 @@ class LoginController extends Controller
             $user = Auth::user();
             Auth::login($user);
 
-            return view('dashboards.admin');
+            $dashboards = User::all()->count();
+            $queries= Support::all()->count();
+            $transactions=Transaction::all()->count();
+            $application=Application::all()->count();
+            return view('dashboards.admin',compact('dashboards','queries','application','transactions'));
         }
         else
         {

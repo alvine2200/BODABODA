@@ -28,8 +28,11 @@
                         <div class="card-body">
                             <span class="dash-widget-icon"><i class="fa fa-briefcase"></i></span>
                             <div class="dash-widget-info">
-                                <h3></h3>
-                                <span>Transactions</span>
+                                <span>
+                                    @if (Auth::user()->is_admin==true)
+                                    <h3>{{$transactions}}</h3>
+                                    @endif Transactions
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -37,10 +40,14 @@
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                     <div class="card dash-widget ">
                         <div class="card-body">
-                            <span class="dash-widget-icon"><i class="fa fa-hotel"></i></span>
+                            <span class="dash-widget-icon"><i class="fa fa-inbox"></i></span>
                             <div class="dash-widget-info">
-                                <h3></h3>
-                                <span>Applications</span>
+                                <span>
+                                    @if (Auth::user()->is_admin==true)
+                                    <h3>{{$application}}</h3>
+                                    @endif Applications
+                                </span>
+                                
                             </div>
                         </div>
                     </div>
@@ -50,8 +57,12 @@
                         <div class="card-body">
                             <span class="dash-widget-icon"><i class="la la-user"></i></span>
                             <div class="dash-widget-info">
-                                <h3></h3>
-                                <span>Users</span>
+                                
+                                <span>
+                                    @if (Auth::user()->is_admin==true)
+                                    <h3>{{$dashboards}}</h3>
+                                    @endif Users
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -59,10 +70,14 @@
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                     <div class="card dash-widget">
                         <div class="card-body">
-                            <span class="dash-widget-icon"><i class="fa fa-car"></i></span>
+                            <span class="dash-widget-icon"><i class="fa fa-question"></i></span>
                             <div class="dash-widget-info">
-                                <h3></h3>
-                                <span>Queries</span>
+                                <span>
+                                    @if (Auth::user()->is_admin==true)
+                                    <h3>{{$queries}}</h3>
+                                    @endif Queries
+                                </span>
+                                
                             </div>
                         </div>
                     </div>

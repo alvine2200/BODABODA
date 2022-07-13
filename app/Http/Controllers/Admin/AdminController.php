@@ -3,12 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Support;
 use App\Models\Application;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
+    public function dashboard()
+    {
+        $dashboards = User::all()->count();
+        $queries= Support::all()->count();
+        $transactions=Transaction::all()->count();
+        $application=Application::all()->count();
+        return view('dashboards.admin',compact('dashboards','queries','application','transactions'));
+    }
     public function get_all_applications()
     {
         $applications=Application::all();
@@ -24,7 +34,7 @@ class AdminController extends Controller
             $approve->update();
             return back()->with('success','Driving school Successfully Approved');
         }
-        
+
     }
 
     public function approve_generate_card($id)
@@ -36,13 +46,26 @@ class AdminController extends Controller
             $approve->update();
             return back()->with('success','Approval for card generation is a success');
         }
-        
+
     }
 
     public function view_application($id)
     {
         $view=Application::with(['users'])->findOrFail($id);
         return view('admin.view_application',compact('view'));
+    }
+
+    public function users()
+    {
+        $users=User::all();
+        return view('admin.users_index')->with('users',$users);
+    }
+
+    public function delete_users($id)
+    {
+        $users=User::findOrFail($id);
+        $users->delete();
+        return back()->with('success','User deleted successfully');
     }
 
 

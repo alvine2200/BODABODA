@@ -34,17 +34,21 @@ Route::group(['middleware'=>'auth'],function(){
     Route::delete('delete_application/{id}',[RiderController::class,'delete_applications']);
 
     //admin applications
+    Route::get('dashboard',[AdminController::class,'dashboard']);
     Route::get('applications',[AdminController::class,'get_all_applications']);
     Route::get('approve_driving_school/{id}',[AdminController::class,'approve_driving_school_status']);
     Route::get('approve_generate_card/{id}',[AdminController::class,'approve_generate_card']);
     Route::get('view_application/{id}',[AdminController::class,'view_application']);
+    Route::get('users_index',[AdminController::class,'users']);
+    Route::delete('delete_user',[AdminController::class,'delete_users']);
+
 
     Route::any('models',[ModelsController::class,'models']);
     Route::any('individual',[ModelsController::class,'individual']);
 
     Route::any('contact',[ModelsController::class,'contact']);
     Route::post('contact_form',[ModelsController::class,'contact_form']);
-    Route::get('dashboard',[ModelsController::class,'dashboard']);
+    
 
 });
 

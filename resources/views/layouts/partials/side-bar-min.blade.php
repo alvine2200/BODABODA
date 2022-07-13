@@ -8,7 +8,7 @@
                     <span>Main</span>
                 </li>
                 <li>
-                    <a href="#"><i class="la la-dashboard"></i>
+                    <a href="{{url('dashboard')}}"><i class="la la-dashboard"></i>
                         <span> Dashboard</span> </a>
 
                 </li>
@@ -18,8 +18,8 @@
                 </li>
                 <li class="submenu">
 
-                    <li><a href="{{url('applications')}}"> <i
-                                class="la la-border-all"></i>
+                    <li><a href="{{url('applications')}}">
+                        <i class="la la-border-all"></i>
                                 <span>Apply</span>
                         </a>
                     </li>
@@ -29,8 +29,8 @@
                 </li>
                 <li class="submenu">
 
-                <li><a href="#"> <i
-                            class="la la-border-all"></i>
+                <li><a href="{{url('users_index')}}">
+                    <i class="la la-border-all"></i>
                             <span>All Users</span>
                     </a>
                 </li>

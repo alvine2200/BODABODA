@@ -4,7 +4,7 @@
     <!-- Logo -->
     <div class="header-left" style="background:white">
         <a href="#" class="logo">
-            <img id="logo_img" src="img/mainlogo.png" height="60" width="40" alt="Logo">
+            <img id="logo_img" src="images/bak logo.png" height="60" width="40" alt="Logo">
         </a>
     </div>
     <!-- /Logo -->
@@ -50,12 +50,12 @@
             </a>
 
             <div class="dropdown-menu">
-                <!--
+                {{-- 
              @if(isset(Auth::user()->employee))
 
                 <a class="dropdown-item" style=" " href="{{route('employees.show', Auth::user()->employee)}}">My Profile</a>
                 @endif
-                -->
+                 --}}
 
                 <a class="dropdown-item" href="#">Settings</a>
                 <a class="dropdown-item" href="#"

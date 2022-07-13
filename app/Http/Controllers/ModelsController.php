@@ -22,6 +22,7 @@ class ModelsController extends Controller
 
     public function dashboard()
     {
+        
         return view('dashboards.admin');
     }
 

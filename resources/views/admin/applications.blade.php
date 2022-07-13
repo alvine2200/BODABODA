@@ -6,16 +6,15 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <!--<h3 class="page-title">Agents Registration</h3> -->
                         {{-- <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index"></a></li>
                             <li class="breadcrumb-item active">Destinations</li>
                         </ul> --}}
                     </div>
-                  <!--  <div class="col-auto float-right ml-auto">
+                    {{-- <div class="col-auto float-right ml-auto">
                         <a href="#" class="btn add-btn" data-toggle="modal" data-target="#create_accomodation"><i
                                 class="fa fa-plus"></i> Add Accommodation</a>
-                    </div> -->
+                    </div>  --}}
                 </div>
             </div>
             
@@ -25,7 +24,7 @@
                         <p style="font-size:20px!important; font-weight:bold;"
                          class="account-subtitle fw-bold display-2">License Application</p>
                         </p>
-                        <!-- <h3 class="account-title">Agents</h3> -->
+                        {{-- <h3 class="account-title">Agents</h3>  --}}
                         {{-- <h3 class="account-title">Register</h3> --}}
                         <p class="float-start">Apply for a License</p>
                         <hr  class="mb-5">
@@ -133,7 +132,7 @@
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     @if (Auth::user()->is_admin == 1)
                                                     <a class="dropdown-item" href="{{url('view_application',$application->id)}}"><i
-                                                        class="fa fa-check m-r-5"></i> View
+                                                        class="fa fa-eye-slash m-r-5"></i> View
                                                  </a>
                                                      <a class="dropdown-item" href="{{url('approve_driving_school',$application->id)}}"><i
                                                             class="fa fa-check m-r-5"></i> Approve Driving School Certificate
