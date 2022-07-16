@@ -31,7 +31,7 @@
                         <hr  class="mb-5">
                         <!-- Account Form -->
                         {{-- <form method="POST" action="{{ route('register') }}"> --}}
-                        <form method="POST" action="{{url('post_application')}}" id="register_form">
+                        <form method="POST" action="{{url('post_application')}}" id="register_form" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 
@@ -128,26 +128,26 @@
                                         <td class="">
                                             <div class="dropdown dropdown-action">
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
-                                                    aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                                    aria-expanded="false"><em class="material-icons">more_vert</em></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     @if (Auth::user()->is_admin == 1)
-                                                     <a class="dropdown-item" href="#"><i
-                                                            class="fa fa-check m-r-5"></i> Approve
+                                                     <a class="dropdown-item" href="#"><em
+                                                            class="fa fa-check m-r-5"></em> Approve
                                                         </a>
                                                      @endif
-                                                     {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_application" ><i
-                                                        class="fa fa-check m-r-5"></i> Edit
+                                                     {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_application" ><em
+                                                        class="fa fa-check m-r-5"></em> Edit
                                                     </a> --}}
-                                                    {{-- <a class="dropdown-item" href="{{url('delete_application',$application->id)}}" data-toggle="modal" data-target="#edit_application" ><i
-                                                        class="fa fa-trash-o m-r-5"></i> Delete
-                                                    </a>  --}}
-                                                    <form action="/delete_application',$application->id" method="post"
+                                                     <a class="dropdown-item" href="{{url('delete_application',$application->id)}}" data-toggle="#" data-target="#" ><em
+                                                        class="fa fa-trash-o m-r-5"></em> Delete
+                                                    </a>  
+                                                    {{-- <form action="/delete_application',$application->id" method="post"
                                                         onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');">
                                                         @method('DELETE')
                                                         @csrf
                                                         <button type="submit" class="dropdown-item" href="#">
-                                                            <i class="fa fa-trash-o m-r-5"></i> Delete</button>
-                                                    </form>
+                                                            <em class="fa fa-trash-o m-r-5"></em> Delete</button>
+                                                    </form> --}}
                                                 </div>
                                             </div>
                                         </td>

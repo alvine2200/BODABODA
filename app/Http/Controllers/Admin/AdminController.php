@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Forum;
 use App\Models\Support;
 use App\Models\Application;
 use App\Models\Transaction;
@@ -34,7 +35,6 @@ class AdminController extends Controller
             $approve->update();
             return back()->with('success','Driving school Successfully Approved');
         }
-
     }
 
     public function approve_generate_card($id)
@@ -46,7 +46,6 @@ class AdminController extends Controller
             $approve->update();
             return back()->with('success','Approval for card generation is a success');
         }
-
     }
 
     public function view_application($id)
@@ -68,6 +67,17 @@ class AdminController extends Controller
         return back()->with('success','User deleted successfully');
     }
 
+    public function approve_forum($id)
+    {
+        $forums=Forum::findOrFail($id);
+        
+        if($forums){
+            $forums->status = 'approved';
+            $forums->update();
+            return back()->with('success','Forum approved successfully');
+        }
+
+    }
 
 
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\ModelsController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\RiderController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\User\ForumsController;
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Authentication\RegisterController;
 
@@ -27,11 +28,14 @@ Route::get('register',[HomeController::class,'register_form']);
 Route::post('post_user',[RegisterController::class,'store']);
 
 Route::group(['middleware'=>'auth'],function(){
-    Route::post('logout',[LoginController::class,'logout_user']);
+    //riders routes
+    Route::any('logout',[LoginController::class,'logout_user']);
     Route::get('apply',[RiderController::class,'application']);
     Route::get('show/{id}',[RiderController::class,'show_application']);
     Route::post('post_application',[RiderController::class,'store_application']);
     Route::delete('delete_application/{id}',[RiderController::class,'delete_applications']);
+    Route::resource('forums',ForumsController::class);
+    Route::get('approve_forum/{id}',[AdminController::class,'approve_forum']);
 
     //admin applications
     Route::get('dashboard',[AdminController::class,'dashboard']);
@@ -48,7 +52,7 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::any('contact',[ModelsController::class,'contact']);
     Route::post('contact_form',[ModelsController::class,'contact_form']);
-    
+
 
 });
 

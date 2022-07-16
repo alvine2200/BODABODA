@@ -109,7 +109,7 @@
         <h3 class="sub-heading">Contact us</h3>
         <h1 class="heading">Talk to us today</h1>
 
-        <form action="{{ url('contact_form') }}" method="post">
+        <form action="{{ url('contact_form') }}" method="post" enctype="multipart/form-data" >
             <span class="error">
                 @if ($errors->any())
                 <div style="margin-left:50px;"  class="alert alert-danger">

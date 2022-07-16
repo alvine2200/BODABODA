@@ -12,7 +12,7 @@ class RiderController extends Controller
 {
     public function application()
     {
-        
+
         $application=Application::where('user_id',Auth::user()->id)->first();
 
         return view('user.application',compact('application'));
@@ -22,8 +22,8 @@ class RiderController extends Controller
     {
         $validator=Validator::make($request->all(),[
             'dob'=>'required|string',
-            'national_id_copy' =>'required|string',
-            'driving_school_certificate' =>'required|string'
+            'national_id_copy' =>'mimes:jpeg,jpg,png,gif|required|max:10240',
+            'driving_school_certificate' =>'mimes:jpeg,jpg,png,gif|required|max:10240'
         ]);
 
         if($validator->fails()) {
@@ -72,10 +72,8 @@ class RiderController extends Controller
 
     public function show_application($id)
     {
-        //$id_app=Application::findOrFail($id);
-        $application=Application::where('user_id',Auth::user()->id)->first();
-
-        return view('user.application',compact('application'));
+        //will write code later
+        
     }
 
 

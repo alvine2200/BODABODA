@@ -3,12 +3,13 @@
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
+
              @if (Auth::user()->is_admin == true)
                     <li class="menu-title">
                     <span>Main</span>
                 </li>
                 <li>
-                    <a href="{{url('dashboard')}}"><i class="la la-dashboard"></i>
+                    <a href="{{url('dashboard')}}"><em class="la la-dashboard"></em>
                         <span> Dashboard</span> </a>
 
                 </li>
@@ -19,7 +20,7 @@
                 <li class="submenu">
 
                     <li><a href="{{url('applications')}}">
-                        <i class="la la-border-all"></i>
+                        <em class="la la-border-all"></em>
                                 <span>Apply</span>
                         </a>
                     </li>
@@ -30,8 +31,8 @@
                 <li class="submenu">
 
                 <li><a href="{{url('users_index')}}">
-                    <i class="la la-border-all"></i>
-                            <span>All Users</span>
+                    <em class="la la-users"></em>
+                            <span>Users</span>
                     </a>
                 </li>
 
@@ -42,9 +43,17 @@
                 </li>
                 <li class="submenu">
 
-                <li><a href="#"> <i
-                            class="la la-border-all"></i>
-                            <span>Transactions Records</span>
+                <li><a href="#"> <em class="fa fa-briefcase"></em>
+                            <span>Transactions </span>
+                    </a>
+                </li>
+
+                <li class="menu-title">
+                    <span>Forums</span>
+                </li>
+                <li>
+                    <a href="{{url('forums')}}"><em class="la la-comment"></em>
+                        <span>Forums </span>
                     </a>
                 </li>
 
@@ -52,8 +61,16 @@
                     <span>Queries</span>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-tasks"></i>
-                        <span>All queries</span>
+                    <a href="#"><em class="fa fa-tasks"></em>
+                        <span>Queries</span>
+                    </a>
+                </li>
+                <li class="menu-title">
+                    <span>Log out</span>
+                </li>
+                <li>
+                    <a href="{{url('logout')}}"><em class="la la-user"></em>
+                        <span>Log Out</span>
                     </a>
                 </li>
              @else
@@ -61,7 +78,7 @@
                     <span>Main</span>
                 </li>
                 <li>
-                    <a href="#"><i class="la la-dashboard"></i>
+                    <a href="#"><em class="la la-dashboard"></em>
                          <span> Dashboard</span> </a>
 
                 </li>
@@ -71,8 +88,7 @@
                 </li>
                 <li class="submenu">
 
-                    <li><a href="{{url('apply')}}"> <i
-                                class="la la-border-all"></i>
+                    <li><a href="{{url('apply')}}"> <em class="la la-border-all"></em>
                                 <span>Apply</span>
                         </a>
                     </li>
@@ -83,20 +99,38 @@
                 </li>
                 <li class="submenu">
 
-                <li><a href="#">
-                    <i class="la la-border-all"></i>
-                        <span>Transactions Records</span>
+                <li><a href="#"><em class="fa fa-briefcase"></em>
+                        <span>Transactions</span>
                     </a>
                 </li>
 
                 <li class="menu-title">
-                    <span>Support section</span>
+                    <span>Forums</span>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-question"></i>
-                        <span>Support section</span>
+                    <a href="{{url('forums')}}"><em class="la la-comment"></em>
+                        <span>Forums </span>
                     </a>
                 </li>
+
+                <li class="menu-title">
+                    <span>Support</span>
+                </li>
+                <li>
+                    <a href="#"><em class="fa fa-question"></em>
+                        <span>Support</span>
+                    </a>
+                </li>
+                <li class="menu-title">
+                    <span>Log out</span>
+                </li>
+                <li>
+                    <a href="{{url('logout')}}"><em class="la la-user"></em>
+                        <span>Log Out</span>
+                    </a>
+                </li>
+
+
 
              @endif
 
