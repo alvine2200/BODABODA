@@ -9,6 +9,7 @@ use App\Models\Application;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -16,9 +17,10 @@ class AdminController extends Controller
     {
         $dashboards = User::all()->count();
         $queries= Support::all()->count();
+        $user_queries=Support::where('user_id',Auth::user()->id)->count();
         $transactions=Transaction::all()->count();
         $application=Application::all()->count();
-        return view('dashboards.admin',compact('dashboards','queries','application','transactions'));
+        return view('dashboards.admin',compact('dashboards','queries','user_queries','application','transactions'));
     }
     public function get_all_applications()
     {

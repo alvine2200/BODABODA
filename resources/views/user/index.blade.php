@@ -84,6 +84,32 @@
 
 </section>
  <!--home section ends-->
+ <section class="forums" id="forum-section">
+    <h3 class="sub-heading">Forums</h3>
+	<h1 class="heading">Forums available</h1>
+
+    <div class="flex-container">
+        <div class="row">
+            @foreach ($forums as $forum)
+                 <a href="{{ url('individual',$forum->id)}}"><div class="image">
+                        <img src="images/forum/{{ $forum->image}}" class="img-responsive" alt="img">
+                    <div class="description">
+                        <span>
+                            <h3 style="font-size:20px !Important">{{$forum->topic}}</h3>
+                        </span>
+
+                        <h4 style="font-size:13px !Important">{{$forum->subtopic}}</h4>
+                        </div>
+                    </div>
+                    </a>
+            @endforeach
+
+        </div>
+    </div>
+    
+ </section>
+
+
 
   <!--about section starts-->
 <section class="about" id="about">
@@ -110,57 +136,7 @@
 </section>
  <!--about section ends-->
 
- <!--menu section starts-->
-
-<!--review section ends-->
-
-
-<!--order section starts-->
-<section  class="order" id="contact_us">
-    <h3 class="sub-heading">Contact us</h3>
-    <h1 class="heading">Contact our helpdesk today</h1>
-
-    <form action="{{url('contact_form')}}" method="post">
-        @csrf
-       <div class="inputBox">
-        <div class="input">
-            <span>name</span>
-            <input type="text" name="name" required placeholder="Enter your name" >
-        </div>
-        <div class="input">
-            <span>phone number</span>
-            <input type="number" name="phone" required placeholder="Enter your phone number" >
-        </div>
-        <div class="input">
-            <span>address(location) </span>
-            <input type="text"name="address" required placeholder="Enter your address" >
-        </div>
-        <div class="input">
-            <span>subject</span>
-            <select  name="subject">
-                <option value="">--select option--</option>
-                <option value="Query">Query</option>
-                <option value="Problem Applying">Problem Applying</option>
-                <option value="other">Other option...</option>
-            </select>
-        </div>
-
-
-        <div class="input">
-            <span>your message</span>
-            <textarea name="message" required placeholder="enter your message" id="" cols="30" rows="10"></textarea>
-        </div>
-        <div class="input">
-            <span>Comments(Extra comments)</span>
-            <textarea name="comments" required placeholder="enter your comments" id="" cols="30" rows="10"></textarea>
-        </div>
-      </div>
-      <input type="submit" value="submit"  name="contact-submit" class="btn">
-
-    </form>
-</section>
-<!--order section ends-->
-
+ 
 <!--footer section starts-->
  @include('user.footer');
 

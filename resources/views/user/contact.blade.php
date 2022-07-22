@@ -165,7 +165,7 @@
                 <span>kenyatta avenue<br>Anniversary towers<br>5th Floor room 54</span>
             </div>
             <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8201541417698!2d36.81419681427458!3d-1.2816562359814632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d253a461ab%3A0xf1a32b0dbcf6c646!2sAnniversary%20Towers!5e0!3m2!1sen!2ske!4v1656964127431!5m2!1sen!2ske" width="450" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe title="kenyatta maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8201541417698!2d36.81419681427458!3d-1.2816562359814632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d253a461ab%3A0xf1a32b0dbcf6c646!2sAnniversary%20Towers!5e0!3m2!1sen!2ske!4v1656964127431!5m2!1sen!2ske" width="450" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>

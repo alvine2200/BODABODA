@@ -31,6 +31,8 @@
                                 <span>
                                     @if (Auth::user()->is_admin==true)
                                     <h3>{{$transactions}}</h3>
+                                    @else
+                                    <h3>{{$user_queries}}</h3>
                                     @endif Transactions
                                 </span>
                             </div>
@@ -45,6 +47,8 @@
                                 <span>
                                     @if (Auth::user()->is_admin==true)
                                     <h3>{{$application}}</h3>
+                                    @else
+                                    <h3>{{$user_application}}</h3>
                                     @endif Applications
                                 </span>
 
@@ -60,7 +64,7 @@
                             <div class="dash-widget-info">
 
                                 <span>
-                                    
+
                                     <h3>{{$users}}</h3>
                                         Users
                                 </span>
@@ -68,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                @endif 
+                @endif
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                     <div class="card dash-widget">
                         <div class="card-body">
@@ -77,6 +81,8 @@
                                 <span>
                                     @if (Auth::user()->is_admin==true)
                                     <h3>{{$queries}}</h3>
+                                    @else
+                                    <h3>{{$user_queries}}</h3>
                                     @endif Queries
                                 </span>
 
