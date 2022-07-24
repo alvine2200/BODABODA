@@ -35,7 +35,7 @@ class LoginController extends Controller
             $user_application=Application::where('user_id',Auth::user()->id)->count();
             return view('dashboards.admin',compact('users','queries','user_queries','application','user_application','transactions','user_transactions'));
         }
-        else
+        else 
         {
             return back()->with('errors','Login failed, try again');
         }
@@ -46,7 +46,7 @@ class LoginController extends Controller
         $user=Auth::user();
         Auth::logout($user);
 
-        return redirect('/login');
+        return redirect('');
     }
 
 }

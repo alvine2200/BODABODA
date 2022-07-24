@@ -35,7 +35,8 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('post_application',[RiderController::class,'store_application']);
     Route::delete('delete_application/{id}',[RiderController::class,'delete_applications']);
     Route::resource('forums',ForumsController::class);
-    Route::get('approve_forum/{id}',[AdminController::class,'approve_forum']);
+    Route::get('approve_forum/{id}',[ForumsController::class,'approve_forum']);
+    Route::get('add_forums',[ForumsController::class,'add_forum']);
 
     //admin applications
     Route::get('dashboard',[AdminController::class,'dashboard']);

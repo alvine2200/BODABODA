@@ -111,6 +111,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                  @if(Auth::user()->is_admin ==true)
                                     @foreach ($forums as $forum)
 
                                          <tr>
@@ -123,14 +125,6 @@
                                             <td>{{$forum->time}}</td>
                                             <td>{{$forum->status}}</td>
 
-                                            {{-- @if ($item->status == 0)
-                                                <td><span class="badge badge-danger">Unapproved</span></td>
-                                            @else
-                                                <td><span class="badge badge-success">Approved</span></td>
-                                            @endif --}}
-
-
-
                                             <td class="">
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
@@ -139,28 +133,50 @@
                                                         @if (Auth::user()->is_admin == 1)
                                                          <a class="dropdown-item" href="{{url('approve_forum',$forum->id)}}">
                                                             <em class="fa fa-check m-r-5" ></em> Approve
-                                                         </a>
-                                                         @endif
+                                                         </a>                                                       
+                                                        
                                                           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_forum" >
                                                             <em class="fa fa-check m-r-5"></em> Edit
-                                                        </a> 
-                                                        <a class="dropdown-item" href="{{url('forums',$forum->id)}}" onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');" >
-                                                            <em class="fa fa-trash-o m-r-5"></em> Delete
-                                                        </a>  
-                                                        {{-- <form action="/delete_application',$application->id" method="post"
-                                                            onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');">
-                                                            @method('DELETE')
-                                                            @csrf
-                                                            <button type="submit" class="dropdown-item" href="#">
-                                                                <em class="fa fa-trash-o m-r-5"></em> Delete</button>
-                                                        </form> --}}
+                                                          </a> 
+                                                          <a class="dropdown-item" href="{{url('forums.destroy',$forum->id)}}" onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');" >
+                                                             <em class="fa fa-trash-o m-r-5"></em> Delete
+                                                          </a> 
+                                                        @endif
+                                                    
+                                                       
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
                                     @endforeach
+                                @else
+                                 @foreach ($forum_user as $fo)
+                                        <tr>                                  
+                                            <td>{{$fo->id }}</td>
+                                            <td>{{$fo->topic }}</td>
+                                            <td>{{$fo->subtopic }}</td>
+                                            <td>{{$fo->image }}</td>
+                                            <td>{{$fo->body }}</td>
+                                            <td>{{$fo->time }}</td>
+                                            <td>{{$fo->status }}</td>
+                                            <td>
+                                                <div class="dropdown dropdown-action">
+                                                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                                        aria-expanded="false"><em class="material-icons">more_vert</em></a>
+                                                    <div class="dropdown-menu dropdown-menu-right">                                               
+                                                       
+                                                    </div>
+                                                </div>
+                                            </td>                                       
+                                        </tr>
+                                     @endforeach                               
+                                    
 
-                                        <div id="edit_forum" class="modal custom-modal fade" role="dialog">
+                                  @endif
+                                      
+
+                                        @if (Auth::user()->is_admin ==true)
+                                          <div id="edit_forum" class="modal custom-modal fade" role="dialog">
                                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -172,7 +188,7 @@
                                                     </div>
 
                                                     <div class="modal-body">
-                                                        <form method="POST" action="{{url('forums',$forum->id)}}" method="POST" enctype="multipart/form-data" >
+                                                        <form method="POST" action="{{url('forums.update',$forum->slug)}}" method="POST" enctype="multipart/form-data" >
                                                             @csrf
                                                             @method('PUT')
                                                             <div class="row">
@@ -250,10 +266,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-
-
-
+                                         </div>  
+                                        @endif 
 
                                 </tbody>
                             </table>

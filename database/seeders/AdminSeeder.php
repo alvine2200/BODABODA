@@ -29,6 +29,7 @@ class AdminSeeder extends Seeder
             'location'=>'muhudu',
             'district'=>'shaviringa',
             'village' =>'jivuye',
+            'slug'=>'sysadmin',
             'is_admin'=>true
 
         ]);
@@ -45,6 +46,7 @@ class AdminSeeder extends Seeder
             'location'=>'muhudu',
             'district'=>'shaviringa',
             'village' =>'jivuye',
+            'slug' =>'user1',
             'is_admin'=>false
 
         ]);

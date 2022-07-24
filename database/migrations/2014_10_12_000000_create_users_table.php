@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('district');
             $table->string('location');
             $table->string('village');
+            $table->string('slug')->unique();
             $table->tinyInteger('is_admin')->default(0);
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();

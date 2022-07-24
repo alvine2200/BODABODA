@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Carbon\Carbon;
 use App\Models\Forum;
 use App\Models\Support;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -22,15 +23,18 @@ class ForumsController extends Controller
     {  
         if(Auth::user()->is_admin == true)
         {
-            $forums=Forum::all();
+            $forums=Forum::all();            
             return view('user.forums',compact('forums'));
         } 
-        else
+        else 
         {
-        $user= Auth::user()->id;
-        $forums=Forum::where('user_id',$user)->get();
+            if(!Auth::user()->is_admin){
+                
+                $forum_user=Forum::where('user_id',Auth::user()->id)->get();
 
-        return view('user.forums',compact('forums'));
+                return view('user.forums',compact('forum_user'));
+            }
+        
         }
 
     }
@@ -76,6 +80,7 @@ class ForumsController extends Controller
         Forum::firstOrCreate([
             'user_id'=>Auth::user()->id,
             'topic'=>$request->topic,
+            'slug'=>Str::slug($request->topic),
             'subtopic'=>$request->subtopic,
             'body'=>$request->body,
             'image'=>$images,
@@ -117,20 +122,20 @@ class ForumsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
         $validator=Validator::make($request->all(),[
             'topic'=>'string',
             'subtopic' =>'string',
             'image'=>'mimes:jpeg,jpg,png,gif,svg|max:10000',
             'body'=>'string',
-        ]);
-
-        $forum=Forum::findOrFail($id);
+        ]);        
+        
         if($validator->fails())
         {
             return back()->with('errors',$validator->errors());
         }
+        $forum=Forum::findOrFail($slug);
 
         if($request->hasFile('image'))
         {
@@ -172,18 +177,36 @@ class ForumsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
         
-        $forums=Forum::findOrFail($id);
-        $image_path = public_path("images/forum/{{$forums->image}}");
+        $forum=Forum::findOrFail($slug);
+        $image_path = public_path("images/forum/{{$forum->image}}");
         
         if(file_exists($image_path)){
             Storage::delete($image_path);
         }
 
-        $forums->delete();
+        $forum->delete();
 
         return back()->with('success','Forum Deleted Successfully');
     }
+
+    public function add_forum()
+    {
+        return view('forum.add_forum');
+    }
+
+    public function approve_forum($id)
+    {
+        $forums=Forum::findOrFail($id);
+        
+        if($forums){
+            $forums->status = 'approved';
+            $forums->update();
+            return back()->with('success','Forum approved successfully');
+        }
+
+    }
+
 }

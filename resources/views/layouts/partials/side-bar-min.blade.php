@@ -74,6 +74,8 @@
                     </a>
                 </li>
              @else
+
+
                 <li class="menu-title">
                     <span>Main</span>
                 </li>
@@ -107,11 +109,17 @@
                 <li class="menu-title">
                     <span>Forums</span>
                 </li>
+                {{-- <li>
+                    <a href="{{url('add_forums')}}"><em class="la la-comment"></em>
+                        <span>Add Forums </span>
+                    </a>
+                </li> --}}
                 <li>
                     <a href="{{url('forums')}}"><em class="la la-comment"></em>
                         <span>Forums </span>
                     </a>
                 </li>
+
 
                 <li class="menu-title">
                     <span>Support</span>

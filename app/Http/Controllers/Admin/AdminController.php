@@ -69,20 +69,5 @@ class AdminController extends Controller
         return back()->with('success','User deleted successfully');
     }
 
-    public function approve_forum($id)
-    {
-        $forums=Forum::findOrFail($id);
-        
-        if($forums){
-            $forums->status = 'approved';
-            $forums->update();
-            return back()->with('success','Forum approved successfully');
-        }
-
-    }
-
-
-
-
-
+    
 }

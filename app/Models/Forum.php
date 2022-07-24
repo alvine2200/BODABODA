@@ -14,6 +14,7 @@ class Forum extends Model
 
     protected $fillable=[
         'user_id',
+        'slug',
         'topic',
         'subtopic',
         'image',
