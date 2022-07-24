@@ -24,4 +24,9 @@ class HomeController extends Controller
         return view('user.register');
     }
 
+    public function show_post($slug)
+    {
+        $post=Forum::with(['users'])->where('slug',$slug)->first();
+        return view('user.post',compact('post'));
+    }
 }

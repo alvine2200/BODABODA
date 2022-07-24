@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en"> 
 <head>
 
     <meta charset="UTF-8">
@@ -91,16 +91,17 @@
     <div class="flex-container">
         <div class="row">
             @foreach ($forums as $forum)
-                 <a href="{{ url('individual',$forum->id)}}"><div class="image">
+                 <a href="{{ url('post',$forum->slug)}}">
+                     <div class="image">
                         <img src="images/forum/{{ $forum->image}}" class="img-responsive" alt="img">
-                    <div class="description">
+                     <div class="description">
                         <span>
                             <h3 style="font-size:20px !Important">{{$forum->topic}}</h3>
                         </span>
 
                         <h4 style="font-size:13px !Important">{{$forum->subtopic}}</h4>
                         </div>
-                    </div>
+                     </div>
                     </a>
             @endforeach
 

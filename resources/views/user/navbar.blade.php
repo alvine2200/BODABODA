@@ -1,8 +1,9 @@
  <!--header starts-->
+ <base href="/public">
 
 	<header>
 
-		<a href="{{url('/')}}"  class="logo"><img src="images/bak logo.png"><p>BAK</p></a>
+		<a href="{{url('/')}}"  class="logo"><img src="images/bak logo.png" alt="logo"><p>BAK</p></a>
 
 		<nav class="navbar">
 			<a class="active" href="{{ url('/')}}">home</a>
@@ -30,12 +31,9 @@
            @endif
        </span>
 
-
-       <!-- <a href="#"><i class="fas fa-bars"></i></a> -->
-
 	     <div class="icons">
-			<i class="fas fa-bars" id="menu-bars"></i>
-			<i class="fas fa-search" id="search-icon"></i>
+			<em class="fas fa-bars" id="menu-bars"></em>
+			<em class="fas fa-search" id="search-icon"></em>
 		</div>
 
 	</header>
@@ -45,7 +43,7 @@
     <form action="" method="post" id="search-form">
         <input type="search" placeholder="search here..." id="search-box" name="">
         <label for="search-box" class="fas fa-search"></label>
-        <i class="fas fa-times" id="close"></i>
+        <em class="fas fa-times" id="close"></em>
     </form>
     <!--search form ends-->
 

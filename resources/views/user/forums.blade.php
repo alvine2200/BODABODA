@@ -135,7 +135,7 @@
                                                             <em class="fa fa-check m-r-5" ></em> Approve
                                                          </a>                                                       
                                                         
-                                                          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_forum" >
+                                                          <a class="dropdown-item" href="{{url('edit_forums',$forum->id)}}">
                                                             <em class="fa fa-check m-r-5"></em> Edit
                                                           </a> 
                                                           <a class="dropdown-item" href="{{url('forums.destroy',$forum->id)}}" onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');" >
@@ -188,7 +188,7 @@
                                                     </div>
 
                                                     <div class="modal-body">
-                                                        <form method="POST" action="{{url('forums.update',$forum->slug)}}" method="POST" enctype="multipart/form-data" >
+                                                        <form method="POST" action="{{url('forums',$forum->id)}}" method="POST" enctype="multipart/form-data" >
                                                             @csrf
                                                             @method('PUT')
                                                             <div class="row">

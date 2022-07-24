@@ -112,7 +112,8 @@ class ForumsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit=Forum::findOrFail($id);
+        return view('user.edit_forum',compact('edit'));
     }
 
     /**
