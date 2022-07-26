@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
 
     <meta charset="UTF-8">
@@ -86,7 +86,7 @@
  <!--home section ends-->
  <section class="forums" id="forum-section">
     <h3 class="sub-heading">Forums</h3>
-	<h1 class="heading">Forums available</h1>
+	<h1 class="heading">Posts available</h1>
 
     <div class="flex-container">
         <div class="row">
@@ -107,7 +107,7 @@
 
         </div>
     </div>
-    
+
  </section>
 
 
@@ -137,7 +137,7 @@
 </section>
  <!--about section ends-->
 
- 
+
 <!--footer section starts-->
  @include('user.footer');
 

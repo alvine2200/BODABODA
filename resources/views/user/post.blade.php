@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
 
     <base href="/public">
@@ -22,8 +22,8 @@
         float: left;
         width: 50%;
         padding: 20px;
-        height: auto; 
-        
+        height: auto;
+
         }
 
         .row:after {
@@ -37,7 +37,7 @@
             justify-content: center;
             align-items: center;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        }     
+        }
        .image img{
             margin:15px;
             width:500px;
@@ -73,10 +73,21 @@
             margin:20px;
 
         }
+        .row .comments{
+            padding-top: 30px;
+            margin:25px;
+            font-size: 16px;
+            font-weight:bold;
+        }
+        .separator{
+            padding-top:20px;
+            font-size:24px;
+            font-weight:bold;
+        }
 
         @media(max-width:445px)
         {
-            
+
             .column {
                 margin:20px;
                 width: 100%;
@@ -99,31 +110,46 @@
             }
 
         }
-        
+
 
     </style>
-   
+
 </head>
 <body>
     @include('user.navbar')
 
-    
+
     <section style="padding-top: 18rem; padding-bottom:4rem;">
         <div class="container">
-            <div class="row">                
+            <div class="row">
                     <div class="column image">
                       <h2 class="post-heading">{{$post->topic}}</h2>
                       <span class="post-subtopic">{{$post->subtopic}}</span>
                       <img src="/images/forum/{{$post->image}}" alt="post image" class="img-responsive">
-                        
+
                     </div>
                     <div class="column info">
                       <p class="body">{{$post->body}}</p>
                       <span class="person">Posted by: {{$post->users->fullname}}</span>
                        <span class="time">Time: {{$post->time}}</span>
-                      
-                    </div>                
-                
+
+                    </div>
+
+                    <div class="separator">
+                        <span class="text">Reply section, Use good language, be sentimental</span>
+                    </div>
+
+                    <div class="comments">
+                        <form action="" method="post">                          
+                            
+                            <textarea id="comments" name="comments" rows="7" cols="150" placeholder="Comment here ..."></textarea>
+
+                            <button type="submit" name="submit-comment" class="btn">Add Comment</button>
+                        </form>
+                        
+
+                    </div>
+
             </div>
         </div>
 
