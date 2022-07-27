@@ -134,21 +134,7 @@
                        <span class="time">Time: {{$post->time}}</span>
 
                     </div>
-
-                    <div class="separator">
-                        <span class="text">Reply section, Use good language, be sentimental</span>
-                    </div>
-
-                    <div class="comments">
-                        <form action="" method="post">                          
-                            
-                            <textarea id="comments" name="comments" rows="7" cols="150" placeholder="Comment here ..."></textarea>
-
-                            <button type="submit" name="submit-comment" class="btn">Add Comment</button>
-                        </form>
-                        
-
-                    </div>
+                    
 
             </div>
         </div>

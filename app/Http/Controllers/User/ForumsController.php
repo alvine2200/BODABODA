@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use Carbon\Carbon;
 use App\Models\Forum;
+use App\Models\Reply;
 use App\Models\Support;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -208,6 +209,20 @@ class ForumsController extends Controller
             return back()->with('success','Forum approved successfully');
         }
 
+    }
+
+    public function view_forums()
+    {
+        $forums=Forum::where('status', 'approved')->latest()->paginate(9);
+        return view('admin.forums',compact('forums'));
+    }
+
+    public function view_post($slug)
+    {
+        
+        $post=Forum::with(['users'])->where('slug',$slug)->first();
+        $replies=Reply::where('forum_id',$post->id)->get();
+        return view('admin.view_posts',compact('post','replies'));
     }
 
 }

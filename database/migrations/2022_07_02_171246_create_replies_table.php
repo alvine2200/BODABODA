@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('forum_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('comment');
-            $table->string('photo');
             $table->timestamps();
         });
     }

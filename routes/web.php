@@ -6,6 +6,7 @@ use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\RiderController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\User\ForumsController;
+use App\Http\Controllers\User\CommentsController;
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Authentication\RegisterController;
 
@@ -27,6 +28,7 @@ Route::post('verify_user',[LoginController::class,'login_user']);
 Route::get('register',[HomeController::class,'register_form']);
 Route::post('post_user',[RegisterController::class,'store']);
 Route::get('post/{slug}',[HomeController::class,'show_post']);
+Route::post('submit_comment/{id}',[CommentsController::class,'store']);
 
 Route::group(['middleware'=>'auth'],function(){
     //riders routes
@@ -39,6 +41,8 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('approve_forum/{id}',[ForumsController::class,'approve_forum']);
     Route::get('add_forums',[ForumsController::class,'add_forum']);
     Route::get('edit_forums/{id}',[ForumsController::class,'edit']);
+    Route::get('view_forums',[ForumsController::class,'view_forums']);
+    Route::get('view_post/{slug}',[ForumsController::class,'view_post']);
 
     //admin applications
     Route::get('dashboard',[AdminController::class,'dashboard']);
