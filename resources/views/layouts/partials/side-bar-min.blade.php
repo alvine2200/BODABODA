@@ -60,14 +60,14 @@
                     <a href="{{url('view_forums')}}"><em class="la la-comment"></em>
                         <span>View Forums </span>
                     </a>
-                </li> 
+                </li>
 
                 <li class="menu-title">
-                    <span>Queries</span>
+                    <span>Support</span>
                 </li>
                 <li>
-                    <a href="#"><em class="fa fa-tasks"></em>
-                        <span>Queries</span>
+                    <a href="{{url('support')}}"><em class="fa fa-tasks"></em>
+                        <span>Support</span>
                     </a>
                 </li>
                 <li class="menu-title">
@@ -85,7 +85,7 @@
                     <span>Main</span>
                 </li>
                 <li>
-                    <a href="#"><em class="la la-dashboard"></em>
+                    <a href="{{url('dashboard')}}"><em class="la la-dashboard"></em>
                          <span> Dashboard</span> </a>
 
                 </li>
@@ -114,7 +114,7 @@
                 <li class="menu-title">
                     <span>Forums</span>
                 </li>
-                
+
                 <li>
                     <a href="{{url('forums')}}"><em class="la la-comment"></em>
                         <span>Forums </span>
@@ -124,14 +124,14 @@
                     <a href="{{url('view_forums')}}"><em class="la la-comment"></em>
                         <span>View Forums </span>
                     </a>
-                </li> 
+                </li>
 
 
                 <li class="menu-title">
                     <span>Support</span>
                 </li>
                 <li>
-                    <a href="#"><em class="fa fa-question"></em>
+                    <a href="{{url('support')}}"><em class="fa fa-question"></em>
                         <span>Support</span>
                     </a>
                 </li>

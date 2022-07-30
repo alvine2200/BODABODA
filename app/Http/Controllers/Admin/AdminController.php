@@ -19,8 +19,10 @@ class AdminController extends Controller
         $queries= Support::all()->count();
         $user_queries=Support::where('user_id',Auth::user()->id)->count();
         $transactions=Transaction::all()->count();
+        $user_transactions=Transaction::where('user_id',Auth::user()->id)->count();
         $application=Application::all()->count();
-        return view('dashboards.admin',compact('users','queries','user_queries','application','transactions'));
+        $user_application=Application::where('user_id',Auth::user()->id)->count();
+        return view('dashboards.admin',compact('users','queries','user_queries','application','user_application','transactions','user_transactions'));
     }
     public function get_all_applications()
     {

@@ -12,8 +12,8 @@
                         </ul> --}}
                     </div>
                     {{-- <div class="col-auto float-right ml-auto">
-                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#create_accomodation"><i
-                                class="fa fa-plus"></i> Add Accommodation</a>
+                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#create_accomodation"><em
+                                class="fa fa-plus"></em> Add Accommodation</a>
                     </div>  --}}
                 </div>
             </div>
@@ -128,28 +128,28 @@
                                         <td class="">
                                             <div class="dropdown dropdown-action">
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
-                                                    aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                                    aria-expanded="false"><em class="material-icons">more_vert</em></a>
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     @if (Auth::user()->is_admin == 1)
-                                                    <a class="dropdown-item" href="{{url('view_application',$application->id)}}"><i
-                                                        class="fa fa-eye-slash m-r-5"></i> View
+                                                    <a class="dropdown-item" href="{{url('view_application',$application->id)}}"><em
+                                                        class="fa fa-eye-slash m-r-5"></em> View
                                                  </a>
-                                                     <a class="dropdown-item" href="{{url('approve_driving_school',$application->id)}}"><i
-                                                            class="fa fa-check m-r-5"></i> Approve Driving School Certificate
+                                                     <a class="dropdown-item" href="{{url('approve_driving_school',$application->id)}}"><em
+                                                            class="fa fa-check m-r-5"></em> Approve Driving School Certificate
                                                      </a>
-                                                     <a class="dropdown-item" href="{{url('approve_generate_card',$application->id)}}"><i
-                                                            class="fa fa-check m-r-5"></i> Approve Generate Card
+                                                     <a class="dropdown-item" href="{{url('approve_generate_card',$application->id)}}"><em
+                                                            class="fa fa-check m-r-5"></em> Approve Generate Card
                                                      </a>
                                                      @endif                                                     
-                                                    {{-- <a class="dropdown-item" href="{{url('delete_application',$application->id)}}" data-toggle="modal" data-target="#edit_application" ><i
-                                                        class="fa fa-trash-o m-r-5"></i> Delete
+                                                    {{-- <a class="dropdown-item" href="{{url('delete_application',$application->id)}}" data-toggle="modal" data-target="#edit_application" ><em
+                                                        class="fa fa-trash-o m-r-5"></em> Delete
                                                     </a>  --}}
                                                     {{-- <form action="/delete_application',$application->id" method="post"
                                                         onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');">
                                                         @method('DELETE')
                                                         @csrf
                                                         <button type="submit" class="dropdown-item" href="#">
-                                                            <i class="fa fa-trash-o m-r-5"></i> Delete</button>
+                                                            <em class="fa fa-trash-o m-r-5"></em> Delete</button>
                                                     </form> --}}
                                                 </div>
                                             </div>

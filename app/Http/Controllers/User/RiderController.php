@@ -31,7 +31,6 @@ class RiderController extends Controller
         }
 
 
-
         $validation=$request->only('national_id_copy','dob','user_id','driving_school_certificate','application_number');
 
 

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Support extends Model
 {
@@ -22,4 +23,11 @@ class Support extends Model
         'reply',
         'time_replied',
     ];
+
+    public function users() :BelongsTo
+    {
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+
+
 }

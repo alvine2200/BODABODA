@@ -32,7 +32,7 @@
                                     @if (Auth::user()->is_admin==true)
                                     <h3>{{$transactions}}</h3>
                                     @else
-                                    <h3>{{$user_queries}}</h3>
+                                    <h3>{{$user_transactions}}</h3>
                                     @endif Transactions
                                 </span>
                             </div>

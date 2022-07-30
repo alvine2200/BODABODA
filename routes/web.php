@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ModelsController;
+use App\Http\Controllers\SupportController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\RiderController;
 use App\Http\Controllers\Admin\AdminController;
@@ -43,6 +44,8 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('edit_forums/{id}',[ForumsController::class,'edit']);
     Route::get('view_forums',[ForumsController::class,'view_forums']);
     Route::get('view_post/{slug}',[ForumsController::class,'view_post']);
+    Route::get('support',[SupportController::class,'index']);
+    Route::post('create_ticket',[SupportController::class,'store']);
 
     //admin applications
     Route::get('dashboard',[AdminController::class,'dashboard']);

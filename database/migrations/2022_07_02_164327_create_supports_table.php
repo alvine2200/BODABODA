@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('photo');
             $table->string('status')->default('pending');
             $table->dateTime('time_sent');
-            $table->longText('reply');
-            $table->dateTime('time_replied');
+            $table->longText('reply')->nullable();
+            $table->dateTime('time_replied')->nullable();
             $table->timestamps();
         });
     }
