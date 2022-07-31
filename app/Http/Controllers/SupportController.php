@@ -171,4 +171,38 @@ class SupportController extends Controller
     {
         //
     }
+
+    public function resolve($id)
+    {
+        $support=Support::findOrFail($id);
+        $support['status']='resolved';
+        $support->update();
+        return back()->with('success','Ticket resolved successfully');
+    }
+
+    public function reply_ticket($id)
+    {
+        $support=Support::findOrFail($id);
+        return view('support.reply', compact('support'));
+    }
+
+    public function reply(Request $request,$id)
+    {
+        $validator=Validator::make($request->all(),[
+            'reply'=>'required|string',
+        ]);
+
+        if($validator->fails())
+        {
+            return back()->with('errors',$validator->errors());
+        }
+
+        $support=Support::findOrFail($id);
+        $support->reply=$request->reply;
+        $support->status='replied';
+        $support->time_replied= \Carbon\Carbon::now()->format('ymdhis');
+        $support->update();
+
+        return redirect('support')->with('success','Reply successfully sent');
+    }
 }

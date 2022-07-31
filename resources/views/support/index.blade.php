@@ -12,7 +12,7 @@
                         <em class="fa fa-plus"></em> Create a Ticket</a>
                 </div>
 
-                <div class="card">                   
+                <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped custom-table mb-0 datatable">
@@ -22,7 +22,6 @@
                                         <th>Ticket Number</th>
                                         <th>Subject</th>
                                         <th>Message</th>
-                                        <th>Photo</th>
                                         <th>Time Sent</th>
                                         <th>Status</th>
                                         <th>Reply Message</th>
@@ -30,45 +29,48 @@
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody>                               
-                                    @foreach ($support as $fo)                                                                    
-                                        
+                                <tbody>
+                                    @foreach ($support as $fo)
+
                                          <tr>
 
                                             <td>{{$fo->id }}</td>
                                             <td>{{$fo->ticket_number }}</td>
                                             <td>{{$fo->subject }}</td>
-                                            <td>{{$fo->message }}</td>                                       
-                                            <td>{{$fo->photo }}</td>  
+                                            <td>{{$fo->message }}</td>
                                             <td>{{$fo->time_sent }}</td>
-                                            <td>{{$fo->status }}</td>   
-                                            <td>{{$fo->reply }}</td>                                     
-                                            <td>{{$fo->time_replied }}</td>                                      
-                                            
+                                            <td>{{$fo->status }}</td>
+                                            <td>{{$fo->reply }}</td>
+                                            <td>{{$fo->time_replied }}</td>
+
                                             {{-- @if ($item->status == 0)
                                                 <td><span class="badge badge-danger">Unapproved</span></td>
                                             @else
                                                 <td><span class="badge badge-success">Approved</span></td>
                                             @endif --}}
-    
-                                                                                        
-                                            
+
+
+
                                             <td class="">
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                                         aria-expanded="false"><em class="material-icons">more_vert</em></a>
-                                                    <div class="dropdown-menu dropdown-menu-right">                                                        
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                            @if (Auth::user()->is_admin == true)
+                                                                <a class="dropdown-item" href="{{url('reply_ticket',$fo->id)}}"><em
+                                                                        class="fa fa-comment m-r-5"></em> Reply
+                                                                </a>
+                                                            @endif
                                                             <a class="dropdown-item" href="{{url('edit_ticket',$fo->id)}}"><em
                                                                 class="fa fa-eye-slash m-r-5"></em> Edit
                                                             </a>
-                                                            <a class="dropdown-item" href="#"><em
-                                                                    class="fa fa-check m-r-5"></em> Delete
+                                                            <a class="dropdown-item" href="{{url('resolve_ticket',$fo->id)}}"><em
+                                                                class="fa fa-check m-r-5"></em> Resolved
                                                             </a>
-                                                         @if (Auth::user()->is_admin == true)
                                                             <a class="dropdown-item" href="#"><em
-                                                                    class="fa fa-check m-r-5"></em> Reply 
+                                                                    class="fa fa-trash m-r-5"></em> Delete
                                                             </a>
-                                                         @endif                                                     
+
                                                         {{-- <a class="dropdown-item" href="{{url('delete_application',$application->id)}}" data-toggle="modal" data-target="#edit_application" ><em
                                                             class="fa fa-trash-o m-r-5"></em> Delete
                                                         </a>  --}}
@@ -83,9 +85,9 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                     @endforeach 
-    
-    
+                                     @endforeach
+
+
                                         <div id="create_ticket" class="modal custom-modal fade" role="dialog">
                                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                                 <div class="modal-content">
@@ -117,7 +119,7 @@
                                                                 <input class="form-control @error('photo') is-invalid @enderror"
                                                                      required type="file" name="photo">
                                                             </div>
-                                                            
+
                                                             <div class="submit-section">
                                                                 <button type="submit" class="btn btn-primary submit-btn col-12">Send a ticket</button>
                                                             </div>
@@ -126,8 +128,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
-    
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -135,7 +137,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </div>
 

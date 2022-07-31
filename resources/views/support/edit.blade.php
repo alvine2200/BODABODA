@@ -1,3 +1,4 @@
+<base href="/public">
 @extends('layouts.smart-hr')
 @section('content')
 <div class="page-wrapper">
@@ -8,7 +9,7 @@
         <div class="mx-auto">
             <div class="row">
                 <div class="col-md-12">
-                    
+
                     <div class="card">
                         <div class="card-header">
                             <div class="account-wrapper">
@@ -37,7 +38,7 @@
                                     <input class="form-control" type="file" name="photo">
                                         <img class="img-responsive mt-2" style="width:300px; height:200px;" alt="img" src="/pictures/support/{{$user->photo}}">
                                 </div>
-                                
+
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn col-12">Update a ticket</button>
                                 </div>
@@ -46,11 +47,11 @@
                     </div>
                 </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
 
 </div>
-    
+
 @endsection

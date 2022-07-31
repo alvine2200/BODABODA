@@ -48,6 +48,9 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('create_ticket',[SupportController::class,'store']);
     Route::get('edit_ticket/{id}',[SupportController::class,'edit']);
     Route::any('update_ticket/{id}',[SupportController::class,'update']);
+    Route::any('resolve_ticket/{id}',[SupportController::class,'resolve']);
+    Route::get('reply_ticket/{id}',[SupportController::class,'reply_ticket']);
+    Route::any('reply/{id}',[SupportController::class,'reply']);
 
     //admin applications
     Route::get('dashboard',[AdminController::class,'dashboard']);
