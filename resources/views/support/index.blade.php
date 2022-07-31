@@ -34,7 +34,7 @@
                                     @foreach ($support as $fo)                                                                    
                                         
                                          <tr>
-                                                
+
                                             <td>{{$fo->id }}</td>
                                             <td>{{$fo->ticket_number }}</td>
                                             <td>{{$fo->subject }}</td>
@@ -58,7 +58,7 @@
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                                         aria-expanded="false"><em class="material-icons">more_vert</em></a>
                                                     <div class="dropdown-menu dropdown-menu-right">                                                        
-                                                            <a class="dropdown-item" href="#"><em
+                                                            <a class="dropdown-item" href="{{url('edit_ticket',$fo->id)}}"><em
                                                                 class="fa fa-eye-slash m-r-5"></em> Edit
                                                             </a>
                                                             <a class="dropdown-item" href="#"><em

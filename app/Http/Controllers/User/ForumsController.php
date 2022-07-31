@@ -147,7 +147,6 @@ class ForumsController extends Controller
             $file->move('images/forum',$images);
 
             $forum['image']=$images;
-            $forum['user_id']=Auth::user()->id;
             $forum['topic']=$request->topic;
             $forum['subtopic']=$request->subtopic;
             $forum['body']=$request->body;

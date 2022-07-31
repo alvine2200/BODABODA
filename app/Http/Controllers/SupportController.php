@@ -15,7 +15,7 @@ class SupportController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {     
+    {
         $index='support.index';
         if(Auth::user()->is_admin == true)
         {
@@ -24,11 +24,11 @@ class SupportController extends Controller
         }
         else
         {
-        $support=Support::where('user_id',Auth::user()->id)->get();   
-        return view($index,compact('support'));  
+            $support=Support::where('user_id',Auth::user()->id)->get();
+            return view($index,compact('support'));
         }
 
-       
+
     }
 
     /**
@@ -96,7 +96,7 @@ class SupportController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -107,7 +107,8 @@ class SupportController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=Support::findOrFail($id);
+        return view('support.edit',compact('user'));
     }
 
     /**
@@ -119,7 +120,45 @@ class SupportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules='string';
+        $validator=Validator::make($request->all(),[
+            'subject'=>$rules,
+            'message'=>$rules,
+            'photo'=>'mimes:jpeg,jpg,png,gif|max:10240',
+        ]);
+
+        if($validator->fails())
+        {
+            return back()->with('errors',$validator->errors());
+        }
+
+        $pic=Support::findOrFail($id);
+
+        if($request->hasFile('photo'))
+        {
+            $file = $request->file('photo');
+            $name=$file->getClientOriginalName();
+            $photo= uniqid().$name;
+            $file->move('pictures/support',$photo);
+
+            $pic['photo']=$photo;
+            $pic['subject']=$request->subject;
+            $pic['message']=$request->message;
+            $pic->update();
+            return back()->with('success','Ticket updated successfully');
+        }
+        elseif($request->hasFile('photo') == '')
+        {
+            $pic['photo']=$pic->photo;
+            $pic['subject']=$request->subject;
+            $pic['message']=$request->message;
+
+            $pic->update();
+
+            return back()->with('success','Ticket updated successfully');
+        }
+
+
     }
 
     /**

@@ -46,6 +46,8 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('view_post/{slug}',[ForumsController::class,'view_post']);
     Route::get('support',[SupportController::class,'index']);
     Route::post('create_ticket',[SupportController::class,'store']);
+    Route::get('edit_ticket/{id}',[SupportController::class,'edit']);
+    Route::any('update_ticket/{id}',[SupportController::class,'update']);
 
     //admin applications
     Route::get('dashboard',[AdminController::class,'dashboard']);
