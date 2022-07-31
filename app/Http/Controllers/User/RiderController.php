@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\User;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -21,13 +22,13 @@ class RiderController extends Controller
     public function store_application(Request $request, Application $application)
     {
         $validator=Validator::make($request->all(),[
-            'dob'=>'required|string',
+            'dob'=>'required|date|before_or_equal:-18 years',
             'national_id_copy' =>'mimes:jpeg,jpg,png,gif|required|max:10240',
             'driving_school_certificate' =>'mimes:jpeg,jpg,png,gif|required|max:10240'
         ]);
 
         if($validator->fails()) {
-            return back()->with('Validation Failed',$validator->errors());
+            return back()->with('errors',$validator->errors());
         }
 
 
@@ -63,9 +64,8 @@ class RiderController extends Controller
 
     public function delete_applications($id)
     {
-        $validation=Application::findOrFail($id);
-        $validation->delete();
-
+        $user=User::findOrFail(Auth::user()->id);        
+        $user->applications()->findOrFail($id)->delete();
         return back()->with('success','Application deleted successfully');
     }
 

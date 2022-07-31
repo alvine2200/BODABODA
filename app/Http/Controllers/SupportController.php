@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Support;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,13 +23,10 @@ class SupportController extends Controller
             $support=Support::all();
             return view($index,compact('support'));
         }
-        else
-        {
+        else{
             $support=Support::where('user_id',Auth::user()->id)->get();
             return view($index,compact('support'));
         }
-
-
     }
 
     /**
@@ -169,7 +167,10 @@ class SupportController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user=User::findOrFail(Auth::user()->id);
+        $user->supports()->find($id)->delete();
+        return back()->with('success','Ticket deleted successfully');
+        
     }
 
     public function resolve($id)

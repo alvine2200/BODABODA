@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Forum;
 use App\Models\Reply;
 use App\Models\Support;
@@ -153,20 +154,20 @@ class ForumsController extends Controller
             $forum['time']=Carbon::now()->format('ymdhis');
             $forum->update();            
     
-            return back()->with('success','Forum updated successfully, waiting for approval');
+            return redirect('forums')->with('success','Forum updated successfully, waiting for approval');
     
         }
         elseif($request->hasFile('image') == null)
         {
             $forum['image']=$forum->image;
             $forum['user_id']=Auth::user()->id;
-            $forum['topic']=$request->topic;
+            $forum['topic']=$request->topic;  
             $forum['subtopic']=$request->subtopic;
             $forum['body']=$request->body;
             $forum['time']=Carbon::now()->format('ymdhis');
             $forum->update();
 
-            return back()->with('success','Forum updated successfully, waiting for approval');
+            return redirect('forums')->with('success','Forum updated successfully, waiting for approval');
         }
 
        
@@ -181,14 +182,8 @@ class ForumsController extends Controller
     public function destroy($slug)
     {
         
-        $forum=Forum::findOrFail($slug);
-        $image_path = public_path("images/forum/{{$forum->image}}");
-        
-        if(file_exists($image_path)){
-            Storage::delete($image_path);
-        }
-
-        $forum->delete();
+        $user=User::findOrFail(Auth::user()->id);
+        $user->forums->find($slug)->delete();        
 
         return back()->with('success','Forum Deleted Successfully');
     }

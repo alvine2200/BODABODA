@@ -3,22 +3,8 @@
     <div class="page-wrapper">
         @include('layouts.partials.flash')
         <div class="mx-auto ">
-            <div class="page-header">
-                <div class="row align-items-center">
-                    {{-- <div class="col">
-
-                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index"></a></li>
-                            <li class="breadcrumb-item active">Destinations</li>
-                        </ul>
-                    </div> --}}
-                  {{-- <div class="col-auto float-right ml-auto">
-                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#create_accomodation">
-                            <i class="fa fa-plus"></i> Add Accommodation</a>
-                    </div>  --}}
-                </div>
+            <div class="page-header">                
             </div>
-
             <div class="card">
                 <div class="card-body">
                     <div class="account-wrapper">
@@ -38,40 +24,27 @@
                                 <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="national_id_copy">{{ __('National Id Copy') }}</label>
-                                        <input id="national_id_copy" type="file" class="form-control @error('national_id_copy') is-invalid @enderror"
-                                               name="national_id_copy" value="{{ old('national_id_copy') }}" autofocus>
-
-                                        @error('national_id_copy')
-                                        <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                        @enderror
+                                        <input id="national_id_copy" type="file" class="form-control" name="national_id_copy"
+                                         value="{{ old('national_id_copy') }}" autofocus>                                                                                
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="dob">{{ __(' Date Of Birth') }}</label>
-                                        <input id="date" type="date" class="form-control @error('dob') is-invalid @enderror"
-                                               name="dob" value="{{ old('email') }}" autofocus>
-                                        @error('dob')
-                                        <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                        @enderror
+                                        <input id="date" type="date" class="form-control" name="dob"
+                                         value="{{ old('email') }}" autofocus>                                        
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="driving_school_certificate">{{ __('Driving School Certificate') }}</label>
-                                        <input id="driving_school_certificate" type="file" class="form-control @error('driving_school_certificate') is-invalid @enderror"
-                                               name="driving_school_certificate" value="{{ old('driving_school_certificate') }}" autofocus>
-                                        @error('driving_school_certificate')
-                                        <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                        @enderror
+                                        <input id="driving_school_certificate" type="file" class="form-control" name="driving_school_certificate"
+                                         value="{{ old('driving_school_certificate') }}" autofocus>
+                                       
+                                        
+                                
                                     </div>
                                 </div>
 
@@ -154,7 +127,7 @@
                                     </tr>
                                 @endif
 
-                                    <div id="#" class="modal custom-modal fade" role="dialog">
+                                    {{-- <div id="#" class="modal custom-modal fade" role="dialog">
                                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -172,8 +145,7 @@
                                                         <div class="form-group">
                                                             <label class="col-form-label">Name <span
                                                                     class="text-danger">*</span></label>
-                                                            <input class="form-control @error('email') is-invalid @enderror"
-                                                                value="#" required type="text"
+                                                            <input class="form-control value="#" required type="text"
                                                                 name="name">
                                                         </div>
                                                         <div class="form-group">
@@ -204,7 +176,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
 
 

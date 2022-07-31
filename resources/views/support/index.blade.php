@@ -67,7 +67,7 @@
                                                             <a class="dropdown-item" href="{{url('resolve_ticket',$fo->id)}}"><em
                                                                 class="fa fa-check m-r-5"></em> Resolved
                                                             </a>
-                                                            <a class="dropdown-item" href="#"><em
+                                                            <a class="dropdown-item" href="{{url('delete_ticket',$fo->id)}}"><em
                                                                     class="fa fa-trash m-r-5"></em> Delete
                                                             </a>
 

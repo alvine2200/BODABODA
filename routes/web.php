@@ -37,13 +37,14 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('apply',[RiderController::class,'application']);
     Route::get('show/{id}',[RiderController::class,'show_application']);
     Route::post('post_application',[RiderController::class,'store_application']);
-    Route::delete('delete_application/{id}',[RiderController::class,'delete_applications']);
+    Route::get('delete_application/{id}',[RiderController::class,'delete_applications']);
     Route::resource('forums',ForumsController::class);
     Route::get('approve_forum/{id}',[ForumsController::class,'approve_forum']);
     Route::get('add_forums',[ForumsController::class,'add_forum']);
     Route::get('edit_forums/{id}',[ForumsController::class,'edit']);
     Route::get('view_forums',[ForumsController::class,'view_forums']);
     Route::get('view_post/{slug}',[ForumsController::class,'view_post']);
+    Route::get('forums_delete/{id}',[ForumsController::class,'destroy']);
     Route::get('support',[SupportController::class,'index']);
     Route::post('create_ticket',[SupportController::class,'store']);
     Route::get('edit_ticket/{id}',[SupportController::class,'edit']);
@@ -51,6 +52,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::any('resolve_ticket/{id}',[SupportController::class,'resolve']);
     Route::get('reply_ticket/{id}',[SupportController::class,'reply_ticket']);
     Route::any('reply/{id}',[SupportController::class,'reply']);
+    Route::get('delete_ticket/{id}',[SupportController::class,'destroy']);
 
     //admin applications
     Route::get('dashboard',[AdminController::class,'dashboard']);

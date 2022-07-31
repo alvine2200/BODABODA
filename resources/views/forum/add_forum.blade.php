@@ -20,8 +20,7 @@
                                 {{-- <form method="POST" action="{{ route('register') }}"> --}}
                                 <form method="POST" action="{{url('forums')}}" method="POST" enctype="multipart/form-data" >
                                     @csrf
-                                    <div class="row">
-    
+                                    <div class="row">    
                                         <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                             <div class="form-group">
                                                 <label for="topic">{{ __('Topic') }}</label>

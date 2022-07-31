@@ -10,7 +10,7 @@
                         <div class="account-wrapper">
                             <p style="font-size:20px!important; font-weight:bold;"
                              class="account-subtitle fw-bold display-2">Forums</p>
-                            </p>
+                            </p>  
 
                             {{-- <h3 class="account-title">Register</h3> --}}
                             <p class="float-start">Create a Forum</p>
@@ -134,15 +134,13 @@
                                                          <a class="dropdown-item" href="{{url('approve_forum',$forum->id)}}">
                                                             <em class="fa fa-check m-r-5" ></em> Approve
                                                          </a>                                                       
-                                                        
                                                           <a class="dropdown-item" href="{{url('edit_forums',$forum->id)}}">
                                                             <em class="fa fa-check m-r-5"></em> Edit
                                                           </a> 
-                                                          <a class="dropdown-item" href="{{url('forums.destroy',$forum->id)}}" onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');" >
+                                                          <a class="dropdown-item" href="{{url('forums_delete',$forum->id)}}" onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');" >
                                                              <em class="fa fa-trash-o m-r-5"></em> Delete
                                                           </a> 
-                                                        @endif
-                                                    
+                                                        @endif                                                                                                          
                                                        
                                                     </div>
                                                 </div>
@@ -164,7 +162,18 @@
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                                         aria-expanded="false"><em class="material-icons">more_vert</em></a>
                                                     <div class="dropdown-menu dropdown-menu-right">                                               
-                                                       
+                                                        @if (Auth::user()->is_admin == 1)
+                                                         <a class="dropdown-item" href="{{url('approve_forum',$forum->id)}}">
+                                                            <em class="fa fa-check m-r-5" ></em> Approve
+                                                         </a>
+                                                         @endif                                                       
+                                                        
+                                                          <a class="dropdown-item" href="{{url('edit_forums',$fo->id)}}">
+                                                            <em class="fa fa-pencil m-r-5"></em> Edit
+                                                          </a> 
+                                                          <a class="dropdown-item" href="{{url('forums_delete',$fo->id)}}" onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');" >
+                                                             <em class="fa fa-trash-o m-r-5"></em> Delete
+                                                          </a> 
                                                     </div>
                                                 </div>
                                             </td>                                       
