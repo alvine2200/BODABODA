@@ -80,7 +80,7 @@
 
                                 <div class="form-group text-center d-grid gap-2 col-6 mx-auto mt-2">
                                     <button type="submit" id="subit_Forums" class="btn btn-danger col-12">
-                                         {{ __('Send Post') }}
+                                         {{ __('Add Forum') }}
                                     </button>
                                 </div>
 

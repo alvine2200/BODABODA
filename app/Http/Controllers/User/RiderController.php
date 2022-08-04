@@ -11,11 +11,9 @@ use Illuminate\Support\Facades\Validator;
 
 class RiderController extends Controller
 {
-    public function application()
-    {
+    public function application()    {
 
         $application=Application::where('user_id',Auth::user()->id)->first();
-
         return view('user.application',compact('application'));
     }
 
@@ -31,9 +29,7 @@ class RiderController extends Controller
             return back()->with('errors',$validator->errors());
         }
 
-
         $validation=$request->only('national_id_copy','dob','user_id','driving_school_certificate','application_number');
-
 
         $uniqueId= mt_rand(10000000,999999999);
         $validation['application_number']=$uniqueId;
@@ -45,8 +41,8 @@ class RiderController extends Controller
             $national=uniqid().$name;
             $file->move('pictures/applications',$national);
             $validation['national_id_copy']=$national;
-
         }
+
         if($request->hasfile('driving_school_certificate'))
         {
             $file= $request->file('driving_school_certificate');
@@ -56,15 +52,13 @@ class RiderController extends Controller
             $validation['driving_school_certificate']=$certificate;
         }
         $validation['user_id']=Auth::user()->id;
-
         $application::create($validation);
-
         return back()->with('success','Applied successfully');
     }
 
     public function delete_applications($id)
     {
-        $user=User::findOrFail(Auth::user()->id);        
+        $user=User::findOrFail(Auth::user()->id);
         $user->applications()->findOrFail($id)->delete();
         return back()->with('success','Application deleted successfully');
     }
@@ -72,7 +66,7 @@ class RiderController extends Controller
     public function show_application($id)
     {
         //will write code later
-        
+
     }
 
 

@@ -133,8 +133,7 @@
                       <span class="person">Posted by: {{$post->users->fullname}}</span>
                        <span class="time">Time: {{$post->time}}</span>
 
-                    </div>
-                    
+                    </div>                    
 
             </div>
         </div>

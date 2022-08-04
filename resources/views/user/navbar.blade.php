@@ -1,6 +1,4 @@
  <!--header starts-->
- <base href="/public">
-
 	<header>
 
 		<a href="{{url('/')}}"  class="logo"><img src="images/bak logo.png" alt="logo"><p>BAK</p></a>
@@ -33,7 +31,6 @@
 
 	     <div class="icons">
 			<em class="fas fa-bars" id="menu-bars"></em>
-			<em class="fas fa-search" id="search-icon"></em>
 		</div>
 
 	</header>

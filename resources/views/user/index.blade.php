@@ -125,9 +125,9 @@
 		</div>
 
 			<div class="content">
-				<h3>Best Modelling agency in the city</h3>
-				<p>Here at Manyatta we identify talents, nurture them with the best skills interms of fashion, modelling and life skills in general. we work and develop our models from scratch to sky </p>
-				<p>we're so determined with our team to achieve the great from this fiels. welcome all </p>
+				<h3>Come Register as a certified rider</h3>
+				<p>Here at we offer valid license and a means of identification for longer terms. Come and register to enjoy being a valued certified rider. Grab your License now and enjoy </p>
+				<p>we're so determined with our team to achieve the great from the riders. welcome all </p>
 
 			 <div class="icons-container">
 				<a href="{{ url('contact')}}" class="btn">Contact us</a>
