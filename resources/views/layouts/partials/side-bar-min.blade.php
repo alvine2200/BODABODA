@@ -43,7 +43,7 @@
                 </li>
                 <li class="submenu">
 
-                <li><a href="#"> <em class="fa fa-briefcase"></em>
+                <li><a href="{{url('transactions')}}"> <em class="fa fa-briefcase"></em>
                             <span>Transactions </span>
                     </a>
                 </li>
@@ -106,7 +106,7 @@
                 </li>
                 <li class="submenu">
 
-                <li><a href="#"><em class="fa fa-briefcase"></em>
+                <li><a href="{{url('transactions')}}"><em class="fa fa-briefcase"></em>
                         <span>Transactions</span>
                     </a>
                 </li>

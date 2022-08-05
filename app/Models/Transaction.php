@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transaction extends Model
 {
@@ -23,13 +24,14 @@ class Transaction extends Model
         'date',
     ];
 
-    public function applications()
+    public function applications() :BelongsTo
     {
-        return $this->belongsTo(Application::class);
+        return $this->belongsTo(Application::class,'application_number','id');
     }
 
-    public function transactionreports()
+    public function users() :BelongsTo
     {
-        return $this->hasMany(Transactionreport::class);
+        return $this->belongsTo(User::class,'user_id','id');
     }
+
 }

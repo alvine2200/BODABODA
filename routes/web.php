@@ -8,6 +8,7 @@ use App\Http\Controllers\User\RiderController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\User\ForumsController;
 use App\Http\Controllers\User\CommentsController;
+use App\Http\Controllers\Transactions\MpesaController;
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Authentication\RegisterController;
 
@@ -53,6 +54,12 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('reply_ticket/{id}',[SupportController::class,'reply_ticket']);
     Route::any('reply/{id}',[SupportController::class,'reply']);
     Route::get('delete_ticket/{id}',[SupportController::class,'destroy']);
+
+    //payment Routes
+    Route::controller(MpesaController::class)->group(function(){
+        Route::get('transactions','index');
+        Route::post('stkpush','stkPush');        
+    });
 
     //admin applications
     Route::get('dashboard',[AdminController::class,'dashboard']);

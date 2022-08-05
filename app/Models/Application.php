@@ -23,7 +23,7 @@ class Application extends Model
 
     public function transactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasOne(Transaction::class);
     }
 
     public function users()
