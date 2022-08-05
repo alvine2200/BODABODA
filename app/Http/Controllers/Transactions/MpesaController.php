@@ -21,11 +21,21 @@ class MpesaController extends Controller
             return view('transaction.adminindex', compact('transaction'));
         }
         else{
-            $transaction=Transaction::where('user_id', Auth::user()->id)->get();
+            $user_phone=Auth::user()->phone;
+            $phone=str_replace('254', '0', $user_phone);
+            $transaction=Transaction::where('phone_number',$phone)->get();
             return view('transaction.index', compact('transaction'));
         }
 
+    }
 
+    public function admin_approval($id)
+    {
+        $transact=Transaction::findOrFail($id);
+        $transact->admin_status='1';
+        $transact->update();
+
+        return back()->with('success','Payment Approved successfully');
     }
 
     public function lipaNaMpesaPassword()
@@ -87,11 +97,10 @@ class MpesaController extends Controller
          $PartyA= "254712135643";
          $PartyB= 174379;
          $PhoneNumber= 254712135643;
-         $CallBackURL= "https://8e3f-197-232-61-238.ngrok.io/api/mpesa_callback_url";
+         $CallBackURL= "https://7612-197-232-61-248.ngrok.io/api/mpesa_callback_url";
          $AccountReference ="BodaBoda License Payment";
          $TransactionDesc="BodaBoda Kenya Members";
          $Remarks="Thank you for transacting with us";
-
 
      $stkPushSimulation=$mpesa->STKPushSimulation($BusinessShortCode,
          $LipaNaMpesaPasskey,
@@ -113,54 +122,29 @@ class MpesaController extends Controller
    public function mpesaResponse(Request $request)
    {
      $response=json_decode($request->getContent());
-     Log::info(json_encode($response));
-     $user=Auth::user()->id;
-     $usertrans=Application::where('user_id',$user)->first();
+     Log::info(json_encode($response));     
 
-     $resCode=$response->Body->stkCallback->ResultCode;
-     $resMessage=$response->Body->stkCallback->ResultDesc;
      $resData=$response->Body->stkCallback->CallbackMetadata;
      $amountPaid = $resData->Item[0]->Value;
      $mpesaTransactionId = $resData->Item[1]->Value;
      $mpesatransactiontime= $resData->Item[3]->Value;
      $paymentPhoneNumber=$resData->Item[4]->Value;
 
-     $formatedPhone=str_replace("254","0",$paymentPhoneNumber);
-
-     if($amountPaid == 1 && $resCode == 0)
-     {
+     //$formatedPhone=str_replace("254","0",$paymentPhoneNumber);
+    
         $transaction= new Transaction;
         $transaction->amount=$amountPaid;
-        $transaction->user_id=$user;
-        $transaction->application_number=$usertrans->application_number;
-        $transaction->paid_by=Auth::user()->fullname;
         $transaction->purpose='License Application';
         $transaction->date=$mpesatransactiontime;
         $transaction->status='Paid';
         $transaction->referrence_number=$mpesaTransactionId;
-        $transaction->phone_number=$formatedPhone;
-        $transaction->save();
-        return back()->with('success','Paid, successfully');
-
-     }
-     else{
-        $transaction= new Transaction;
-        $transaction->amount=$amountPaid;
-        $transaction->user_id=$user;
-        $transaction->paid_by=Auth::user()->fullname;
-        $transaction->application_number=$usertrans->application_number;
-        $transaction->resultDesc=$resMessage;
-        $transaction->purpose='License Application';
-        $transaction->date=$mpesatransactiontime;
-        $transaction->status='Not fully settled';
-        $transaction->referrence_number=$mpesaTransactionId;
-        $transaction->phone_number=$formatedPhone;
+        $transaction->phone_number=$paymentPhoneNumber;
         $transaction->save();
 
-        return back()->with('success','Payment is Successful, please settle the balance soon');
+        return back()->with('success','Payment is Successful, Thank you');
      }
 
 
 
-   }
+   
 }

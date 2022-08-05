@@ -15,13 +15,14 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
+
         $users = User::all()->count();
         $queries= Support::all()->count();
         $user_queries=Support::where('user_id',Auth::user()->id)->count();
         $transactions=Transaction::all()->count();
-        $user_transactions=Transaction::where('user_id',Auth::user()->id)->count();
+        $user_transactions=Transaction::where('phone_number',Auth::user()->id)->count();
         $application=Application::all()->count();
-        $user_application=Application::where('user_id',Auth::user()->id)->count();
+        $user_application=Application::where('user_id',Auth::user()->phone)->count();
         return view('dashboards.admin',compact('users','queries','user_queries','application','user_application','transactions','user_transactions'));
     }
     public function get_all_applications()

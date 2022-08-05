@@ -57,8 +57,9 @@ Route::group(['middleware'=>'auth'],function(){
 
     //payment Routes
     Route::controller(MpesaController::class)->group(function(){
-        Route::get('transactions','index');
-        Route::post('stkpush','stkPush');        
+        Route::any('transactions','index');
+        Route::post('stkpush','stkPush');  
+        Route::any('approve_transactions/{id}','admin_approval');     
     });
 
     //admin applications

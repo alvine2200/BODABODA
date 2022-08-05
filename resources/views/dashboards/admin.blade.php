@@ -30,7 +30,7 @@
                             <div class="dash-widget-info">
                                 <span>
                                     @if (Auth::user()->is_admin==true)
-                                    <h3>{{$transactions}}</h3>
+                                    <h3>{{$transactions}}</h3> 
                                     @else
                                     <h3>{{$user_transactions}}</h3>
                                     @endif Transactions

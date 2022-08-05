@@ -3,7 +3,7 @@
     <div class="page-wrapper">
         @include('layouts.partials.flash')
         <div class="mx-auto ">
-            <div class="page-header">                
+            <div class="page-header">
             </div>
             <div class="card">
                 <div class="card-body">
@@ -25,7 +25,7 @@
                                     <div class="form-group">
                                         <label for="national_id_copy">{{ __('National Id Copy') }}</label>
                                         <input id="national_id_copy" type="file" class="form-control" name="national_id_copy"
-                                         value="{{ old('national_id_copy') }}" autofocus>                                                                                
+                                         value="{{ old('national_id_copy') }}" autofocus>
                                     </div>
                                 </div>
 
@@ -33,7 +33,7 @@
                                     <div class="form-group">
                                         <label for="dob">{{ __(' Date Of Birth') }}</label>
                                         <input id="date" type="date" class="form-control" name="dob"
-                                         value="{{ old('email') }}" autofocus>                                        
+                                         value="{{ old('email') }}" autofocus>
                                     </div>
                                 </div>
 
@@ -42,9 +42,9 @@
                                         <label for="driving_school_certificate">{{ __('Driving School Certificate') }}</label>
                                         <input id="driving_school_certificate" type="file" class="form-control" name="driving_school_certificate"
                                          value="{{ old('driving_school_certificate') }}" autofocus>
-                                       
-                                        
-                                
+
+
+
                                     </div>
                                 </div>
 
@@ -74,9 +74,10 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Application number</th>
+                                    <th>Transaction status</th>
                                     <th>Driving School Status</th>
                                     <th>Generate card status</th>
-                                    <th>dob</th>
+
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -86,9 +87,10 @@
 
                                         <td>{{$application->id}}</td>
                                         <td>{{$application->application_number}}</td>
+                                        <td>{{$application->transaction_status}}</td>
                                         <td>{{$application->driving_school_status}}</td>
                                         <td>{{$application->generate_card}}</td>
-                                        <td>{{$application->dob}}</td>
+
 
                                         {{-- @if ($item->status == 0)
                                             <td><span class="badge badge-danger">Unapproved</span></td>

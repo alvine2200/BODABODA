@@ -38,14 +38,11 @@
                     <div class="table-responsive">
                         <table class="table table-striped custom-table mb-0 datatable">
                             <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Application number</th>
-                                    <th>User_ID</th>
+                                <tr>                                                                      
                                     <th>Amount</th>
-                                    <th>Paid By</th>
                                     <th>Refference_number</th>
                                     <th>Status</th>
+                                    <th>Admin_Approval</th>
                                     <th>Phone Number</th>
                                     <th>Purpose</th>
                                     <th>Date and Time</th>
@@ -55,23 +52,27 @@
                             <tbody>
                                     @foreach($transaction as $trans)
 
-                                     <tr>
-                                        <td>{{$trans['id']}}</td>
-                                        <td>{{$trans['application_number']}}</td>
-                                        <td>{{$trans['user_id']}}</td>
-                                        <td>{{$trans['amount']}}</td>
-                                        <td>{{$trans['paid_by']}}</td>
+                                      <tr>                       
+                                                                               
+                                        <td>{{$trans['amount']}}</td>                                        
                                         <td>{{$trans['referrence_number']}}</td>
-                                        <td>{{$trans['status']}}</td>
+                                            @if ($trans['status'] == 'pending')
+                                              <td><span class="badge badge-danger">Pending</span></td>
+                                            @else
+                                              <td><span class="badge badge-success">Paid</span></td>
+                                            @endif
+                                              
+                                            @if ($trans['admin_status'] == '0')
+                                              <td><span class="badge badge-danger">Pending</span></td>
+                                            @else
+                                              <td><span class="badge badge-success">Approved</span></td>
+                                            @endif  
+                                            
                                         <td>{{$trans['phone_number']}}</td>
                                         <td>{{$trans['purpose']}}</td>
                                         <td>{{$trans['date']}}</td>
 
-                                        {{-- @if ($item->status == 0)
-                                            <td><span class="badge badge-danger">Unapproved</span></td>
-                                        @else
-                                            <td><span class="badge badge-success">Approved</span></td>
-                                        @endif --}}
+                                        
 
                                         <td class="">
                                             <div class="dropdown dropdown-action">
@@ -86,9 +87,7 @@
                                                      {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_application" ><em
                                                         class="fa fa-check m-r-5"></em> Edit
                                                     </a> --}}
-                                                     <a class="dropdown-item" href="{{url('delete_application')}}" data-toggle="#" data-target="#" ><em
-                                                        class="fa fa-trash-o m-r-5"></em> Delete
-                                                    </a>
+                                                     
                                                     {{-- <form action="/delete_application',$application->id" method="post"
                                                         onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');">
                                                         @method('DELETE')

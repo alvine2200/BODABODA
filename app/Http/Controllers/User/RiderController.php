@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Validator;
 
 class RiderController extends Controller
 {
-    public function application()    {
-
+    public function application()  
+    {  
         $application=Application::where('user_id',Auth::user()->id)->first();
         return view('user.application',compact('application'));
     }
