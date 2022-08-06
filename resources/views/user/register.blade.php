@@ -11,14 +11,13 @@
 </head>
 <body>
 
-
     <div class="container">
         <div class="wrapper">
             @if (Session::has('success'))
             <div class="alert alert-success">
                 <button type="button" class="close" data-dismiss="alert">×</button>
                 {{Session::get('success')}}
-            </div>                
+            </div>
             @endif
             @if(count($errors) > 0 )
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -37,11 +36,11 @@
             <form action="/post_user" method="post" class="p-3 mt-3">
                 @csrf
                 <div class="form-field d-flex align-items-center">
-                     <span class="fas fa-envelope"></span>
+                     <span class="fas fa-person"></span>
                      <input type="text" name="fullname" id="fullname" placeholder="Fullname">
                  </div>
                  <div class="form-field d-flex align-items-center">
-                     <span class="fas fa-envelope"></span>
+                     <span class="fas fa-person"></span>
                      <input type="text" name="username" id="username" placeholder="Username">
                  </div>
                  <div class="form-field d-flex align-items-center">
@@ -53,35 +52,30 @@
                     <input type="number" name="phone" id="phone" placeholder="Phone Number">
                 </div>
                  <div class="form-field d-flex align-items-center">
-                     <span class="fas fa-envelope"></span>
+                     <span class="fa-solid fa-id-card"></span>
                      <input type="number" name="id_number" id="id_number" placeholder="National id number">
                  </div>
 
                  <div class="form-field d-flex align-items-center">
-                     <span class="fas fa-envelope"></span>
+                     <span class="fa-solid fa-earth-africa"></span>
                      <input type="input" name="county" id="county" placeholder="County">
                  </div>
                  <div class="form-field d-flex align-items-center">
-                     <span class="fas fa-envelope"></span>
+                     <span class="fa-solid fa-earth-africa"></span>
                      <input type="input" name="subcounty" id="subcounty" placeholder="Subcounty">
                  </div>
                  <div class="form-field d-flex align-items-center">
-                    <span class="fas fa-envelope"></span>
+                    <span class="fa-solid fa-earth-africa"></span>
                     <input type="input" name="district" id="district" placeholder="District">
                 </div>
                  <div class="form-field d-flex align-items-center">
-                     <span class="fas fa-envelope"></span>
+                     <span class="fa-solid fa-earth-africa"></span>
                      <input type="input" name="location" id="location" placeholder="location">
                  </div>
                  <div class="form-field d-flex align-items-center">
-                     <span class="fas fa-envelope"></span>
+                     <span class="fas fa-home"></span>
                      <input type="input" name="village" id="village" placeholder="Village">
                  </div>
-                <!-- <div class="form-field d-flex align-items-center">
-                     <span class="fas fa-envelope"></span>
-                     <input type="file" name="avatar" id="userName" placeholder="Avatar">
-                 </div>
-                          -->
                 <div class="form-field d-flex align-items-center">
                      <span class="fas fa-key"></span>
                      <input type="password" name="password" id="pwd" placeholder="Password">
@@ -89,12 +83,13 @@
                  <div class="form-field d-flex align-items-center">
                     <span class="fas fa-key"></span>
                     <input type="password" name="password_confirmation" id="pwd_confm" placeholder="Password Confirmation">
-                </div>
+                 </div>
 
                     <button type="submit"  class="btn mt-3">Register</button>
 
             </form>
-            <div class="text-center fs-6">  <a href="{{url('login')}}">Sign in</a> </div>
+            <div class="text-center fs-6">  <a href="{{url('login')}}">Sign in</a> or  <a href="{{url('/')}}">Home</a> </div>
+
         </div>
     </div>
 

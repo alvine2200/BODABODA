@@ -32,6 +32,7 @@ class User extends Authenticatable
         'district',
         'village',
         'slug',
+        'avatar',
     ];
 
     /**

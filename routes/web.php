@@ -11,6 +11,7 @@ use App\Http\Controllers\User\CommentsController;
 use App\Http\Controllers\Transactions\MpesaController;
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Authentication\RegisterController;
+use App\Http\Controllers\Authentication\AuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,14 @@ Route::get('post/{slug}',[HomeController::class,'show_post']);
 Route::post('submit_comment/{id}',[CommentsController::class,'store']);
 
 Route::group(['middleware'=>'auth'],function(){
+    //profile.html
+    Route::controller(AuthenticationController::class)->group(function(){
+            Route::get('profile','index');
+            Route::any('add_avatar','post_avatar');
+            Route::any('edit_profile','update_profile');
+            Route::post('change_password','change_password');
+    });
+
     //riders routes
     Route::any('logout',[LoginController::class,'logout_user']);
     Route::get('apply',[RiderController::class,'application']);

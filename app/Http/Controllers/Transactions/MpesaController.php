@@ -88,19 +88,21 @@ class MpesaController extends Controller
 
     public function stkPush(Request $request)
     {
-     $mpesa=new Mpesa();
+        $user_phone=Auth::user()->phone;
+        $mpesa=new Mpesa();
 
          $BusinessShortCode=174379;
          $LipaNaMpesaPasskey="bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
          $TransactionType="CustomerPayBillOnline";
          $Amount="1";
-         $PartyA= "254712135643";
+         $PartyA= "$user_phone";
          $PartyB= 174379;
-         $PhoneNumber= 254712135643;
+         $PhoneNumber= $user_phone;
          $CallBackURL= "https://7612-197-232-61-248.ngrok.io/api/mpesa_callback_url";
          $AccountReference ="BodaBoda License Payment";
          $TransactionDesc="BodaBoda Kenya Members";
          $Remarks="Thank you for transacting with us";
+
 
      $stkPushSimulation=$mpesa->STKPushSimulation($BusinessShortCode,
          $LipaNaMpesaPasskey,
@@ -122,7 +124,7 @@ class MpesaController extends Controller
    public function mpesaResponse(Request $request)
    {
      $response=json_decode($request->getContent());
-     Log::info(json_encode($response));     
+     Log::info(json_encode($response));
 
      $resData=$response->Body->stkCallback->CallbackMetadata;
      $amountPaid = $resData->Item[0]->Value;
@@ -131,7 +133,7 @@ class MpesaController extends Controller
      $paymentPhoneNumber=$resData->Item[4]->Value;
 
      //$formatedPhone=str_replace("254","0",$paymentPhoneNumber);
-    
+
         $transaction= new Transaction;
         $transaction->amount=$amountPaid;
         $transaction->purpose='License Application';
@@ -146,5 +148,5 @@ class MpesaController extends Controller
 
 
 
-   
+
 }

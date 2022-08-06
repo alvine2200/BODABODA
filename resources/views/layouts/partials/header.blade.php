@@ -57,7 +57,7 @@
                 @endif
                  --}}
 
-                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="{{url('profile')}}">Settings</a>
                 <a class="dropdown-item" href="#"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
