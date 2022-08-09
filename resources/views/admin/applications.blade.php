@@ -17,7 +17,7 @@
                     </div>  --}}
                 </div>
             </div>
-            
+
             <div class="card">
                 <div class="card-body">
                     <div class="account-wrapper">
@@ -47,7 +47,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="dob">{{ __(' Date Of Birth') }}</label>
@@ -60,7 +60,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                               
+
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="driving_school_certificate">{{ __('Driving School Certificate') }}</label>
@@ -73,8 +73,8 @@
                                         @enderror
                                     </div>
                                 </div>
- 
-                                </div>                               
+
+                                </div>
 
                                 <div class="form-group text-center d-grid gap-2 col-6 mx-auto mt-2">
                                     <button type="submit" id="register" class="btn btn-danger col-12">
@@ -82,10 +82,10 @@
                                     </button>
                                  </div>
 
-                             </div>                        
+                             </div>
 
-                           
-                        
+
+
                         </form>
                         <!-- /Account Form -->
                     </div>
@@ -101,30 +101,47 @@
                                     <th>ID</th>
                                     <th>Application number</th>
                                     <th>Driving School Status</th>
+                                    <th>Transaction status</th>
                                     <th>Generate card status</th>
                                     <th>dob</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>                               
-                                    @foreach ($applications as $application)                                     
-                                    
+                            <tbody>
+                                    @foreach ($applications as $application)
+
                                      <tr>
 
                                         <td>{{$application->id}}</td>
                                         <td>{{$application->application_number}}</td>
-                                        <td>{{$application->driving_school_status}}</td>
-                                        <td>{{$application->generate_card}}</td>                                       
-                                        <td>{{$application->dob}}</td>                                       
-                                        
+
+                                        @if ($application->driving_school_status == 'pending')
+                                          <td><span class="badge badge-danger">Pending</span></td>
+                                        @else
+                                          <td><span class="badge badge-success">Pass</span></td>
+                                        @endif
+
+                                        @if ($application->transaction_status == 'pending')
+                                          <td><span class="badge badge-danger">Pending</span></td>
+                                        @else
+                                          <td><span class="badge badge-success">Approved</span></td>
+                                        @endif
+
+                                        @if ($application->generate_card == 'pending')
+                                          <td><span class="badge badge-danger">Pending</span></td>
+                                        @else
+                                          <td><span class="badge badge-success">Yes</span></td>
+                                        @endif
+                                        <td>{{$application->dob}}</td>
+
                                         {{-- @if ($item->status == 0)
                                             <td><span class="badge badge-danger">Unapproved</span></td>
                                         @else
                                             <td><span class="badge badge-success">Approved</span></td>
                                         @endif --}}
 
-                                                                                    
-                                        
+
+
                                         <td class="">
                                             <div class="dropdown dropdown-action">
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
@@ -140,7 +157,7 @@
                                                      <a class="dropdown-item" href="{{url('approve_generate_card',$application->id)}}"><em
                                                             class="fa fa-check m-r-5"></em> Approve Generate Card
                                                      </a>
-                                                     @endif                                                     
+                                                     @endif
                                                     {{-- <a class="dropdown-item" href="{{url('delete_application',$application->id)}}" data-toggle="modal" data-target="#edit_application" ><em
                                                         class="fa fa-trash-o m-r-5"></em> Delete
                                                     </a>  --}}
@@ -209,7 +226,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
 
                             </tbody>
                         </table>

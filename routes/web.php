@@ -12,6 +12,8 @@ use App\Http\Controllers\Transactions\MpesaController;
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Authentication\RegisterController;
 use App\Http\Controllers\Authentication\AuthenticationController;
+use App\Http\Controllers\Authentication\ForgotPasswordController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,14 @@ Route::get('register',[HomeController::class,'register_form']);
 Route::post('post_user',[RegisterController::class,'store']);
 Route::get('post/{slug}',[HomeController::class,'show_post']);
 Route::post('submit_comment/{id}',[CommentsController::class,'store']);
+Route::any('logout',[LoginController::class,'logout_user']);
+
+Route::get('forget-password', [ForgotPasswordController::class, 'ForgetPassword'])->name('ForgetPasswordGet');
+Route::post('forget-password', [ForgotPasswordController::class, 'ForgetPasswordStore'])->name('ForgetPasswordPost');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'ResetPassword'])->name('ResetPasswordGet');
+Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordStore'])->name('ResetPasswordPost');
+
+
 
 Route::group(['middleware'=>'auth'],function(){
     //profile.html
@@ -43,7 +53,7 @@ Route::group(['middleware'=>'auth'],function(){
     });
 
     //riders routes
-    Route::any('logout',[LoginController::class,'logout_user']);
+
     Route::get('apply',[RiderController::class,'application']);
     Route::get('show/{id}',[RiderController::class,'show_application']);
     Route::post('post_application',[RiderController::class,'store_application']);
@@ -67,8 +77,8 @@ Route::group(['middleware'=>'auth'],function(){
     //payment Routes
     Route::controller(MpesaController::class)->group(function(){
         Route::any('transactions','index');
-        Route::post('stkpush','stkPush');  
-        Route::any('approve_transactions/{id}','admin_approval');     
+        Route::post('stkpush','stkPush');
+        Route::any('approve_transactions/{id}','admin_approval');
     });
 
     //admin applications

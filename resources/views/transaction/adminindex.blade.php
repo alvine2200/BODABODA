@@ -39,8 +39,8 @@
                         <table class="table table-striped custom-table mb-0 datatable">
                             <thead>
                                 <tr>
-                                    <th>ID</th>                                    
-                                    <th>Amount</th>                                    
+                                    <th>ID</th>
+                                    <th>Amount</th>
                                     <th>Refference_number</th>
                                     <th>Status</th>
                                     <th>Admin_status</th>
@@ -54,19 +54,19 @@
                                     @foreach ($transaction as $trans)
                                      <tr>
                                         <td>{{$trans->id ?? 'No trans yet'}}</td>
-                                        <td>{{$trans->amount ?? 'No trans yet'}}</td>                                       
+                                        <td>{{$trans->amount ?? 'No trans yet'}}</td>
                                         <td>{{$trans->referrence_number ?? 'No trans yet'}}</td>
                                         @if ($trans['status'] == 'pending')
                                           <td><span class="badge badge-danger">Pending</span></td>
                                         @else
                                           <td><span class="badge badge-success">Paid</span></td>
-                                        @endif  
+                                        @endif
 
                                         @if ($trans['admin_status'] == '0')
                                             <td><span class="badge badge-danger">Pending</span></td>
                                         @else
                                             <td><span class="badge badge-success">Approved</span></td>
-                                        @endif 
+                                        @endif
                                         <td>{{$trans->phone_number ?? 'No trans yet'}}</td>
                                         <td>{{$trans->purpose ?? 'No trans yet'}}</td>
                                         <td>{{$trans->date ?? 'No trans yet'}}</td>

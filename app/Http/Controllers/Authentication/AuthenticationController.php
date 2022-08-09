@@ -2,23 +2,27 @@
 
 namespace App\Http\Controllers\Authentication;
 
+use Carbon\Carbon;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthenticationController extends Controller
 {
     public function index()
-    {   
+    {
         $user_id=User::findOrFail(Auth::user()->id);
         return view('profile.index', compact('user_id'));
     }
 
     public function post_avatar(Request $request)
     {
-        $validated=$request->validated([
+        $validated=$request->validate([
             'avatar'=>'required|mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
         $avatar=User::findOrFail(Auth::user()->id);
@@ -32,14 +36,14 @@ class AuthenticationController extends Controller
         $avatar->avatar=$name;
         $avatar->update();
 
-        return back()->with('success','Profile picture added successfully');        
+        return back()->with('success','Profile picture added successfully');
 
     }
 
     public function update_profile(Request $request)
     {
         $validated=$request->validate([
-            'fullname'=>'string',            
+            'fullname'=>'string',
             'username'=> 'required|string|regex:/(^([a-zA-z]+)(\d+)?$)/u',
             'id_number'=> 'required|string',
             'county'=> 'required|string',
@@ -59,7 +63,7 @@ class AuthenticationController extends Controller
             $file=$request->file('avatar');
             $name=uniqid().$file->getClientOriginalName();
             $file->move('User/profiles',$name);
-        
+
         $avatar->avatar=$name;
         $avatar->fullname=$validated['fullname'];
         $avatar->username=$validated['username'];
@@ -73,7 +77,7 @@ class AuthenticationController extends Controller
         $avatar->phone=$validated['phone'];
         $avatar->update();
 
-        return back()->with('success','Profile picture updated successfully'); 
+        return back()->with('success','Profile picture updated successfully');
       }
 
       if($request->hasFile('avatar') == null)
@@ -90,10 +94,10 @@ class AuthenticationController extends Controller
         $avatar->district=$validated['district'];
         $avatar->village=$validated['village'];
         $avatar->phone=$validated['phone'];
-       
+
         $avatar->update();
 
-        return back()->with('success','Profile picture updated successfully'); 
+        return back()->with('success','Profile picture updated successfully');
       }
 
 
@@ -115,11 +119,64 @@ class AuthenticationController extends Controller
             return back()->with('warning','You cant use your Immediate password');
         }
 
-        $user_present->password=Hash::make($password);        
+        $user_present->password=Hash::make($password);
         $user_present->update();
 
         return back()->with('success','Password Changed successfully, Login with the new password');
     }
 
+
+    public function forgotPassword(Request $request)
+    {
+        return view('password.forgot_password');
+    }
+
+    public function forgotPasswordStore(Request $request)
+    {
+        $validated=$request->validate([
+            'email' => 'required|email|exists:users,email',
+        ]);
+
+        $token=Str::random(64);
+        DB::table('password_resets')->insert([
+            'email' => $request->email,
+            'token' => $token,
+            'created_at' => Carbon::now()
+        ]);
+
+        Mail::send('auth.forget-password-email', ['token' => $token], function($message) use($request){
+            $message->to($request->email);
+            $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
+            $message->subject('Reset Password');
+        });
+
+        return back()->with('success', 'We have emailed your password reset link');
+    }
+
+    public function ResetPassword($token)
+    {
+        return view('mail.forget_password_link', array('token' => $token));
+    }
+
+    public function ResetPasswordStore(Request $request) {
+        $request->validate([
+            'email' => 'required|email|exists:users',
+            'password' => 'required|string|min:8|confirmed',
+            'password_confirmation' => 'required'
+        ]);
+
+        $update = DB::table('password_resets')->where(['email' => $request->email, 'token' => $request->token])->first();
+
+        if(!$update){
+            return back()->withInput()->with('error', 'Invalid token!');
+        }
+
+        $user = User::where('email', $request->email)->update(['password' => Hash::make($request->password)]);
+
+        // Delete password_resets record
+        DB::table('password_resets')->where(['email'=> $request->email])->delete();
+
+        return redirect('login')->with('message', 'Your password has been successfully changed!');
+    }
 
 }

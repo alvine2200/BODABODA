@@ -20,28 +20,27 @@
             </div>
             @endif
            @if (Session::has('errors'))
-           <div class="alert alert-danger">
-             <button type="button" class="close" data-dismiss="alert">×</button>
-             {{Session::get('errors')}}
-           </div>
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                {{Session::get('errors')}}
+            </div>
 
            @endif
 
 
-            <div class="text-center mt-4 name"> Login In to Your Account</div>
-            <form action="{{ url('verify_user') }}" method="post" class="p-3 mt-3">
+            <div class="text-center mt-4 name"> Forgot Your Password?</div>
+            <div class="text-center mt-3 name"> Dont worry, use registered email</div>
+            <form action="{{ route('ForgetPasswordPost') }}" method="post" class="p-3 mt-3">
                 @csrf
                 <div class="form-field d-flex align-items-center">
                      <span class="fas fa-envelope"></span> <input type="email" name="email" id="userName" placeholder="Email">
                  </div>
-                <div class="form-field d-flex align-items-center">
-                     <span class="fas fa-key"></span> <input type="password" name="password" id="pwd" placeholder="Password">
-                 </div>
+                
 
-                    <button type="submit" name="login" class="btn mt-3">Login</button>
+                    <button type="submit" name="login" class="btn mt-3">Send Mail </button>
 
             </form>
-            <div class="text-center fs-6"> <a href="{{url('forget-password')}}">Forget password?</a> or <a href="{{url('register')}}">Sign up</a> </div>
+            <div class="text-center fs-6"><a href="{{url('register')}}">Sign up</a> or <a href="{{url('login')}}">Sign In</a> </div>
             <div class="text-center fs-6 mt-3"> <a href="{{url('/')}}">Home</a>
         </div>
     </div>

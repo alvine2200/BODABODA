@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Models\User;
 use App\Models\Application;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +12,22 @@ use Illuminate\Support\Facades\Validator;
 
 class RiderController extends Controller
 {
-    public function application()  
-    {  
+    public function application()
+    {
         $application=Application::where('user_id',Auth::user()->id)->first();
+         $status=Transaction::where('phone_number',$application->users->phone)->first();
+         if($status)
+         {
+            $application->transaction_status='paid';
+             $application->update();
+            
+         }
+
+         if($application->driving_school_status == 'pass' && $application->transaction_status == 'paid')
+         {
+            $application->generate_card='Yes';
+            $application->update();
+         }
         return view('user.application',compact('application'));
     }
 
