@@ -47,18 +47,18 @@
                                             <td class="">
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
-                                                        aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                                        aria-expanded="false"><em class="material-icons">more_vert</em></a>
                                                     <div class="dropdown-menu dropdown-menu-right">
                                                         {{-- @if (Auth::user()->is_admin == 1)
-                                                         <a class="dropdown-item" href="#"><i
-                                                                class="fa fa-trash-o m-r-5"></i> Delete
+                                                         <a class="dropdown-item" href="#"><em
+                                                                class="fa fa-trash-o m-r-5"></em> Delete
                                                             </a>
                                                          @endif --}}
-                                                         {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_user" ><i
-                                                            class="fa fa-check m-r-5"></i> Edit
+                                                         {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_user" ><em
+                                                            class="fa fa-check m-r-5"></em> Edit
                                                         </a> --}}
                                                          {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_application" >
-                                                            <i class="fa fa-trash-o m-r-5"></i> Delete
+                                                            <em class="fa fa-trash-o m-r-5"></em> Delete
                                                         </a>   --}}
                                                          <form action="{{url('delete_user',$user->id)}}" method="post"
                                                             onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');">

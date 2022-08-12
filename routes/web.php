@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DompdfController;
 use App\Http\Controllers\ModelsController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\RiderController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\User\ForumsController;
+use App\Http\Controllers\User\LicenseController;
 use App\Http\Controllers\User\CommentsController;
 use App\Http\Controllers\Transactions\MpesaController;
 use App\Http\Controllers\Authentication\LoginController;
@@ -52,6 +54,10 @@ Route::group(['middleware'=>'auth'],function(){
             Route::post('change_password','change_password');
     });
 
+    Route::get('license/{id}',[LicenseController::class,'index']);
+    Route::get('generate-pdf/{id}',[DompdfController::class,'index']);
+    Route::get('view-pdf/{id}',[DompdfController::class,'show']);
+
     //riders routes
 
     Route::get('apply',[RiderController::class,'application']);
@@ -96,7 +102,6 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::any('contact',[ModelsController::class,'contact']);
     Route::post('contact_form',[ModelsController::class,'contact_form']);
-
 
 });
 

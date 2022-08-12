@@ -12,10 +12,10 @@
                             <div style="background-color: #eee;">
                                 <div class="container py-5">
                                   <div class="row">
-                                    <div class="col">                                      
+                                    <div class="col">
                                     </div>
                                   </div>
-                              
+
                                   <div class="row">
                                     <div class="col-lg-4">
                                       <div class="card mb-4">
@@ -27,21 +27,25 @@
                                             Rider @else Admin @endif
                                           </p>
                                           <p class="text-muted mb-4">{{$user_id->county}},{{$user_id->location}},{{$user_id->village}}</p>
-                                          
+
                                         </div>
                                       </div>
                                       <div class="card mb-4 mb-lg-0">
                                         <div class="card-body p-0">
-                                          <ul class="list-group list-group-flush rounded-3">                                            
+                                          <ul class="list-group list-group-flush rounded-3">
                                             <li class="list-group-item d-flex justify-content-center align-items-center p-3">
                                               <p class=" btn btn-danger mb-0"  data-toggle="modal" data-target="#add_avatar">Add Avatar</p>
                                             </li>
                                             <li class="list-group-item d-flex justify-content-center align-items-center p-3">
                                                 <p class=" btn btn-danger mb-0" data-toggle="modal" data-target="#edit_profile">Edit Profile</p>
-                                            </li> 
+                                            </li>
                                             <li class="list-group-item d-flex justify-content-center align-items-center p-3">
                                                 <p class=" btn btn-danger mb-0" data-toggle="modal" data-target="#change_password">Change Password</p>
-                                            </li>                                                                                     
+                                            </li>
+                                            <li class="list-group-item d-flex justify-content-center align-items-center p-3">
+                                                <a class="btn btn-primary" href="{{ url('license',$user_id->id)}}"> Download License</a>
+                                            </li>
+
                                           </ul>
                                         </div>
                                       </div>
@@ -55,7 +59,7 @@
                                             </div>
                                             <div class="col-sm-9">
                                               <p class="text-muted mb-0">{{$user_id->fullname}}</p>
-                                            </div>                                            
+                                            </div>
                                           </div>
                                           <hr>
                                           <div class="row">
@@ -64,7 +68,7 @@
                                             </div>
                                             <div class="col-sm-9">
                                               <p class="text-muted mb-0">{{$user_id->username}}</p>
-                                            </div>                                            
+                                            </div>
                                           </div>
                                           <hr>
                                           <div class="row">
@@ -73,7 +77,7 @@
                                             </div>
                                             <div class="col-sm-9">
                                               <p class="text-muted mb-0">{{$user_id->id_number}}</p>
-                                            </div>                                            
+                                            </div>
                                           </div>
                                           <hr>
                                           <div class="row">
@@ -93,8 +97,8 @@
                                               <p class="text-muted mb-0">{{$user_id->phone}}</p>
                                             </div>
                                           </div>
-                                          <hr>                               
-                                          
+                                          <hr>
+
                                           <div class="row">
                                             <div class="col-sm-3">
                                               <p class="mb-0">Address(County to Village)</p>
@@ -105,8 +109,8 @@
                                           </div>
                                         </div>
                                       </div>
-                                      
-                                    </div>
+
+                                    </div>                                    
                                   </div>
                                 </div>
                               </div>
@@ -183,7 +187,7 @@
                             <label class="col-form-label">Village</label>
                             <input class="form-control " value="{{$user_id->village}}"
                                  type="text" name="village">
-                        </div>                       
+                        </div>
                         <div class="form-group">
                             <label class="col-form-label">Avatar </label>
                             <input class="form-control " type="file" name="avatar">
@@ -212,7 +216,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="{{url('add_avatar')}}" method="POST" enctype="multipart/form-data">
-                        @csrf                        
+                        @csrf
                         <div class="form-group">
                             <label class="col-form-label">Avatar <span
                                     class="text-danger">*</span></label>
@@ -241,7 +245,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="{{url('change_password')}}" method="POST" enctype="multipart/form-data">
-                        @csrf                        
+                        @csrf
                         <div class="form-group">
                             <label class="col-form-label">Password <span
                                     class="text-danger">*</span></label>
@@ -261,5 +265,5 @@
             </div>
         </div>
     </div>
-    
+
 @endsection

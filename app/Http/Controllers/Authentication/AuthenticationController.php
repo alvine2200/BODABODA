@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Authentication;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Application;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,8 @@ class AuthenticationController extends Controller
     public function index()
     {
         $user_id=User::findOrFail(Auth::user()->id);
-        return view('profile.index', compact('user_id'));
+        $application=Application::where('user_id',Auth::user()->id)->get();
+        return view('profile.index', compact('user_id','application'));
     }
 
     public function post_avatar(Request $request)
