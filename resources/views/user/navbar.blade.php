@@ -5,7 +5,7 @@
 
 		<nav class="navbar">
 			<a class="active" href="{{ url('/')}}">home</a>
-            <a href="{{url('about')}}">About Us</a>
+            <a href="{{url('verify')}}">Verify Riders</a>
 			<a href="{{url('contact')}}">Contact Us</a>
 			<a href="{{url('login')}}">Login</a>
 			<a href="{{url('register')}}">Register</a>
@@ -21,9 +21,9 @@
             @if ($errors->any())
             <div style="margin-left:50px; font-size:16px; color:red;"  class="alert alert-danger">
                 
-                    @foreach ($errors->all() as $message)
-                        <span style="color:red">{{ $message }}, Not submitted</span>
-                    @endforeach
+                @foreach ($errors->all() as $message)
+                    <span style="color:red">{{ $message }}, Not submitted</span>
+                @endforeach
                 
             </div>
            @endif

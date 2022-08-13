@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\User\ForumsController;
 use App\Http\Controllers\User\LicenseController;
 use App\Http\Controllers\User\CommentsController;
+use App\Http\Controllers\User\VerifyRiderController;
 use App\Http\Controllers\Transactions\MpesaController;
 use App\Http\Controllers\Authentication\LoginController;
 use App\Http\Controllers\Authentication\RegisterController;
@@ -37,6 +38,8 @@ Route::post('post_user',[RegisterController::class,'store']);
 Route::get('post/{slug}',[HomeController::class,'show_post']);
 Route::post('submit_comment/{id}',[CommentsController::class,'store']);
 Route::any('logout',[LoginController::class,'logout_user']);
+Route::get('verify',[VerifyRiderController::class,'index']);
+Route::post('search',[VerifyRiderController::class,'search']);
 
 Route::get('forget-password', [ForgotPasswordController::class, 'ForgetPassword'])->name('ForgetPasswordGet');
 Route::post('forget-password', [ForgotPasswordController::class, 'ForgetPasswordStore'])->name('ForgetPasswordPost');
@@ -48,10 +51,10 @@ Route::post('reset-password', [ForgotPasswordController::class, 'ResetPasswordSt
 Route::group(['middleware'=>'auth'],function(){
     //profile.html
     Route::controller(AuthenticationController::class)->group(function(){
-            Route::get('profile','index');
-            Route::any('add_avatar','post_avatar');
-            Route::any('edit_profile','update_profile');
-            Route::post('change_password','change_password');
+        Route::get('profile','index');
+        Route::any('add_avatar','post_avatar');
+        Route::any('edit_profile','update_profile');
+        Route::post('change_password','change_password');
     });
 
     Route::get('license/{id}',[LicenseController::class,'index']);

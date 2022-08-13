@@ -54,12 +54,22 @@
                 <img  src="images/bak logo.png" alt="card-image" >
             </div>
             <div class="card-body">
-                <p> Name: {{$user->fullname}}</p>
-                <p> License Number: {{$application->application_number}}</p>
-                <p> Date of Issue: <?php $ldate=date('Y-m-d'); echo $ldate; ?> </p>
+                <p> Name: {{$search->users->fullname}}</p>
+                <p> License Number: {{$search->application_number}}</p>
+                <p> Date of Issue: {{$search->updated_at}}</p>
             </div>
         </div>
     </div>
+    
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    @if(session()->has('found'))
+      <script>
+        swal("Rider Found","Congratulations","success");
+      </script>
+    @endif
+
 </body>
 </html>
+
 
