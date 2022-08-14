@@ -105,61 +105,7 @@
 
     @include('user.navbar');
 
-    <section style="padding-top: 17rem;" class="order" id="contact_us">
-        <h3 class="sub-heading">Contact us</h3>
-        <h1 class="heading">Talk to us today</h1>
-
-        <form action="{{ url('contact_form') }}" method="post" enctype="multipart/form-data" >
-            <span class="error">
-                @if ($errors->any())
-                <div style="margin-left:50px;"  class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $message)
-                            <li>{{ $message }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                 @endif
-               </span>
-            @csrf
-           <div class="inputBox">
-            <div class="input">
-                <span>name</span>
-                <input type="text" required name="name" placeholder="Enter your name" >
-            </div>
-            <div class="input">
-                <span>phone number</span>
-                <input type="number" required name="phone" placeholder="Enter your phone number" >
-            </div>
-            <div class="input">
-                <span>address(location) </span>
-                <input type="text"  required name="address" placeholder="Enter your address" >
-            </div>
-            <div class="input">
-                <span>Subject</span>
-                <select required  name="subject">
-                    <option value="">--select option--</option>
-                    <option value="Query">Query</option>
-                    <option value="Problem Applying">Problem Applying</option>
-                    <option value="other">Other option...</option>
-                </select>
-            </div>
-
-
-            <div class="input">
-                <span>Message</span>
-                <textarea name="message" required placeholder="enter your message" id="" cols="30" rows="10"></textarea>
-            </div>
-            <div class="input">
-                <span>Comments(extra comments)</span>
-                <textarea name="comments" required placeholder="enter your comments" id="" cols="30" rows="10"></textarea>
-            </div>
-          </div>
-          <input type="submit" value="Submit" id="contact_submit" onclick=MyFunction()  class="btn">
-        </form>
-    </section>
-
-    <div class="maps-container">
+    <div style="padding-top:17rem; padding-bottom:4rem" class="maps-container">
         <div class="row">
             <div class="header">
                 <span>kenyatta avenue<br>Anniversary towers<br>5th Floor room 54</span>

@@ -88,7 +88,7 @@
 		width: 0;
 		font-size: 1.2em;
 		color: #fff;
-		transition: .45s;
+		transition: .45s;  
 	}
 	.SearchBox-button {
 		display: flex;
@@ -161,9 +161,9 @@
 </script>
 @endif
 
-@if(session()->has('found'))
+@if(session()->has('success'))
 <script>
-    swal("Rider Found","Congratulations","success");
+    swal("Rider Found","Enjoy your ride","success");
 </script>
 @endif
 

@@ -15,16 +15,16 @@
 		<div class="box">
 			<h3>quick links</h3>
 			<a class="active" href="{{ url('/')}}">home</a>
-            <a href="{{url('about')}}">About Us</a>
+            <a href="{{url('verify')}}">Verify Riders</a>
 			<a href="{{url('contact')}}">Contact Us</a>
 			<a href="{{url('login')}}">Login</a>
 			<a href="{{url('register')}}">Register</a>
 		</div>
 		<div class="box">
 			<h3>contact info</h3>
-			<a href="#"><i class="fab fa-whatsapp fa-lg"></i>
-                 <i class="fas fa-phone-square-alt fa-lg"></i>
-                 <i class="fas fa-sms fa-lg"></i>
+			<a href="#"><em class="fab fa-whatsapp fa-lg"></em>
+                 <em class="fas fa-phone-square-alt fa-lg"></em>
+                 <em class="fas fa-sms fa-lg"></em>
                  +2547 121 356 43
             </a>
 

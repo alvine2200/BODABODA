@@ -40,6 +40,8 @@ Route::post('submit_comment/{id}',[CommentsController::class,'store']);
 Route::any('logout',[LoginController::class,'logout_user']);
 Route::get('verify',[VerifyRiderController::class,'index']);
 Route::post('search',[VerifyRiderController::class,'search']);
+Route::any('contact',[ModelsController::class,'contact']);
+Route::post('contact_form',[ModelsController::class,'contact_form']);
 
 Route::get('forget-password', [ForgotPasswordController::class, 'ForgetPassword'])->name('ForgetPasswordGet');
 Route::post('forget-password', [ForgotPasswordController::class, 'ForgetPasswordStore'])->name('ForgetPasswordPost');
@@ -98,13 +100,6 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('view_application/{id}',[AdminController::class,'view_application']);
     Route::get('users_index',[AdminController::class,'users']);
     Route::delete('delete_user',[AdminController::class,'delete_users']);
-
-
-    Route::any('models',[ModelsController::class,'models']);
-    Route::any('individual',[ModelsController::class,'individual']);
-
-    Route::any('contact',[ModelsController::class,'contact']);
-    Route::post('contact_form',[ModelsController::class,'contact_form']);
 
 });
 

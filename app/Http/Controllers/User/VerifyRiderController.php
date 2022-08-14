@@ -20,12 +20,13 @@ class VerifyRiderController extends Controller
         ]);
 
         $field=$validated['field'];
-        $search=Application::with(['users'])
+        $application=Application::with(['users'])
                              ->where('application_number','LIKE',"%{$field}%")
                              ->where('generate_card','=','Yes')->first();
-        if($search)
+        if($application)
         {
-            return view('license.search',compact('search'))->with('found','Yes, Model Exists...');
+            return back()->with('success','Rider, Found');
+           // return view('license.search',compact('application'))->with('found','Yes, Model Exists...');
         }
         else{
             return back()->with('fail','Not found');

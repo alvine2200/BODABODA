@@ -8,8 +8,6 @@
 	<title>Boda Association of Kenya</title>
 
 	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-
-
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<link rel="stylesheet" type="text/css" href="css/manyatta.css">
@@ -48,11 +46,12 @@
 					<span>BodaBoda Association of Kenya</span>
 					<h3>Kenyan BodaBoda Members</h3>
 					<p> Welcome To BAK, Register, apply for a license.  <p>
-					<a href="#" class="btn">Contact Us</a>
+					<a href="https://wa.me/0712135643" class="btn">Contact Us</a>
 				</div>
-				<div class="image">
-					<img src="images/bodaboda images.jpg" alt="image">
-				</div>
+                <div class="image">
+                    <img src="images/bak logo.png" alt="image">
+                </div>
+				
 			</div>
             <div class="swiper-slide slide">
                 <div class="content">
@@ -62,8 +61,8 @@
                     <a href="#" class="btn">Contact Us</a>
                 </div>
                 <div class="image">
-                    <img src="images/bak logo.png" alt="image">
-                </div>
+					<img src="images/bodaboda images.jpg" alt="image">
+				</div>
             </div>
             <div class="swiper-slide slide">
                 <div class="content">
@@ -104,7 +103,6 @@
                      </div>
                     </a>
             @endforeach
-
         </div>
     </div>
 
@@ -121,7 +119,7 @@
 	<div class="row">
 
 		<div class="image">
-			<img style="border-radius: 5px;" src="{{asset('images/bak logo.png')}}" alt="image">
+			<img style="border-radius: 5px;" src="{{asset('images/bak2.jpg')}}" alt="image">
 		</div>
 
 			<div class="content">
