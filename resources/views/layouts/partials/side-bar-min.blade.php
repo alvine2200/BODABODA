@@ -71,10 +71,15 @@
                     </a>
                 </li>
                 <li class="menu-title">
-                    <span>Log out</span>
+                    <span>Settings</span>
                 </li>
                 <li>
-                    <a href="{{url('logout')}}"><em class="la la-user"></em>
+                    <a href="{{url('profile')}}"><em class="la la-user"></em>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('logout')}}"><em class="la la-lock"></em>
                         <span>Log Out</span>
                     </a>
                 </li>
@@ -136,15 +141,18 @@
                     </a>
                 </li>
                 <li class="menu-title">
-                    <span>Log out</span>
+                    <span>Settings</span>
                 </li>
                 <li>
-                    <a href="{{url('logout')}}"><em class="la la-user"></em>
+                    <a href="{{url('profile')}}"><em class="la la-user"></em>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('logout')}}"><em class="la la-lock"></em>
                         <span>Log Out</span>
                     </a>
                 </li>
-
-
 
              @endif
 

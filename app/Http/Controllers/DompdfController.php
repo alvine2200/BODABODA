@@ -14,8 +14,11 @@ class DompdfController extends Controller
     public function index($id)
     {
         $user=User::findOrFail($id);
-        $application=Application::where('user_id',$user->id)->first();
-        $pdf=Pdf::loadView('license.pdf',compact('user','application'));
+
+        $application=Application::with(['users'])
+                                ->where('user_id',$user->id)->first();
+
+        $pdf=Pdf::loadView('license.pdf',compact('application'));
         return $pdf->download('license.pdf');
     }
 

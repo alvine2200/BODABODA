@@ -20,6 +20,7 @@
             column:100%;
         }
         .container .row .card-head{
+            column: 100%;
             padding-top: 10px;
             padding-left: 10px;
             display:flex !important;
@@ -27,6 +28,7 @@
             align-items: center;
         }
         .container .row .card-head h3{
+            column: 100%;
             margin-top: 20px;
             text-align: center;
             margin-bottom:15px;
@@ -38,6 +40,7 @@
             object-fit: contain;
         }
         .container .row .card-body{
+            columns: 100%;
             text-align:center;
             font-size:16px;
             font-weight:bold;
@@ -48,10 +51,10 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
+         <div class="row">
             <div class="card-head">
                 <h3> BodaBoda Association of Kenya</h3>
-                <img  src="images/bak logo.png" alt="card-image" >
+                {{-- <img  src="images/bak logo.png" alt="card-image" > --}}
             </div>
             <div class="card-body">
                 <p> Name: {{$search->users->fullname}}</p>
@@ -60,12 +63,12 @@
             </div>
         </div>
     </div>
-    
+
  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @if(session()->has('found'))
       <script>
-        swal("Rider Found","Congratulations","success");
+        swal("Rider Found","enjoy your ride","success");
       </script>
     @endif
 

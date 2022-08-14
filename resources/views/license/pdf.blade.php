@@ -54,11 +54,27 @@
                 <img  src="images/bak logo.png" alt="card-image" >
             </div>
             <div class="card-body">
-                <p> Name: {{$user->fullname}}</p>
+                <p> Name: {{$application->users->fullname}}</p>
                 <p> License Number: {{$application->application_number}}</p>
-                <p> Date of Issue: <?php $ldate=date('Y-m-d'); echo $ldate; ?> </p>
+                <p> Date of Issue: {{$application->updated_at->toDateString()}}</p>
+                <p> Date of Expiry: {{$application->updated_at->addYear()->toDateString()}}</p>
             </div>
         </div>
+        <div style="margin-top:2rem;" class="row">
+            <div class="card-head">
+                <h3> BodaBoda Association of Kenya</h3>
+                <img  src="User/profiles/{{$application->users->avatar}}" alt="card-image" >
+            </div>
+            <div class="card-body">
+                <p>This is to certify that {{$application->users->fullname}} 
+                    of license number {{$application->application_number}}  
+                    dated {{$application->updated_at->toDateString()}}
+                    is hereby certified and known rider of our BodaBoda Association of Kenya.
+                    He is a certified Rider and complies with the road safety measures.
+                </p>                
+            </div>
+        </div>
+
     </div>
 </body>
 </html>

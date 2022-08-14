@@ -29,8 +29,8 @@ class VerifyRiderController extends Controller
         }
         else{
             return back()->with('fail','Not found');
-        }     
-       
+        }
+
     }
 
 
