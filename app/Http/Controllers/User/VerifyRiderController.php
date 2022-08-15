@@ -25,7 +25,7 @@ class VerifyRiderController extends Controller
                              ->where('generate_card','=','Yes')->first();
         if($application)
         {
-            return back()->with('success','Rider, Found');
+            return back()->with('success','');
            // return view('license.search',compact('application'))->with('found','Yes, Model Exists...');
         }
         else{

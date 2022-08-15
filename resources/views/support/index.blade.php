@@ -62,7 +62,7 @@
                                                                 </a>
                                                             @endif
                                                             <a class="dropdown-item" href="{{url('edit_ticket',$fo->id)}}"><em
-                                                                class="fa fa-pen m-r-5"></em> Edit
+                                                                class="fa fa-pencil m-r-5"></em> Edit
                                                             </a>
                                                             <a class="dropdown-item" href="{{url('resolve_ticket',$fo->id)}}"><em
                                                                 class="fa fa-check m-r-5"></em> Resolved

@@ -42,10 +42,11 @@
                                             <li class="list-group-item d-flex justify-content-center align-items-center p-3">
                                                 <p class=" btn btn-danger mb-0" data-toggle="modal" data-target="#change_password">Change Password</p>
                                             </li>
+                                            @if($application?->generate_card == 'Yes')
                                             <li class="list-group-item d-flex justify-content-center align-items-center p-3">
                                                 <a class="btn btn-primary" href="{{ url('license',$user_id->id)}}"> Download License</a>
-                                            </li>
-
+                                            </li>                                                                                    
+                                            @endif
                                           </ul>
                                         </div>
                                       </div>
@@ -110,7 +111,7 @@
                                         </div>
                                       </div>
 
-                                    </div>                                    
+                                    </div>
                                   </div>
                                 </div>
                               </div>

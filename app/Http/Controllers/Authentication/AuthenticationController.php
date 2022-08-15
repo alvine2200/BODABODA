@@ -18,13 +18,13 @@ class AuthenticationController extends Controller
     public function index()
     {
         $user_id=User::findOrFail(Auth::user()->id);
-        $application=Application::where('user_id',Auth::user()->id)->get();
+        $application=DB::table('applications')->where('user_id',Auth::user()->id)->first();
         return view('profile.index', compact('user_id','application'));
     }
 
     public function post_avatar(Request $request)
     {
-        $validated=$request->validate([
+        $request->validate([
             'avatar'=>'required|mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
         $avatar=User::findOrFail(Auth::user()->id);
@@ -83,7 +83,6 @@ class AuthenticationController extends Controller
       }
 
       if($request->hasFile('avatar') == null)
-
       {
         $avatar->avatar=$avatar['avatar'];
         $avatar->fullname=$validated['fullname'];
@@ -96,7 +95,6 @@ class AuthenticationController extends Controller
         $avatar->district=$validated['district'];
         $avatar->village=$validated['village'];
         $avatar->phone=$validated['phone'];
-
         $avatar->update();
 
         return back()->with('success','Profile picture updated successfully');
