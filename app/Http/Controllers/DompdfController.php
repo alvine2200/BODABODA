@@ -30,5 +30,19 @@ class DompdfController extends Controller
         return $pdf->stream();
     }
 
+    public function user_report()
+    {
+        $user=User::all();
+        $pdf=Pdf::loadView('user.download_users', compact('user'));
+        return $pdf->download('users_reports.pdf');
+    }
+
+    public function individual_report($id)
+    {
+        $user=User::findOrFail($id);
+        $application=Application::where('user_id',$id)->first();
+        $pdf=Pdf::loadView('user.user_report', compact('user','application'));
+        return $pdf->download('individual_report.pdf');
+    }
 
 }

@@ -8,6 +8,7 @@ use App\Models\Support;
 use App\Models\Application;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -64,8 +65,16 @@ class AdminController extends Controller
         return view('admin.users_index')->with('users',$users);
     }
 
+    public function view_user($id)
+    {
+        $user_id=User::findOrFail($id);
+        $application=DB::table('applications')->where('user_id',$id)->first();
+        return view('admin.view_user',compact('user_id','application'));
+    }
+
     public function delete_users($id)
     {
+
         $users=User::findOrFail($id);
         $users->delete();
         return back()->with('success','User deleted successfully');

@@ -1,3 +1,4 @@
+<base href="/public">
 @extends('layouts.smart-hr')
 @section('content')
     <div class="page-wrapper">
@@ -10,7 +11,7 @@
                         <div class="account-wrapper">
                             <p style="font-size:20px!important; font-weight:bold;"
                              class="account-subtitle fw-bold display-2">Forums</p>
-                            </p>  
+                            </p>
 
                             {{-- <h3 class="account-title">Register</h3> --}}
                             <p class="float-start">Create a Forum</p>
@@ -133,15 +134,15 @@
                                                         @if (Auth::user()->is_admin == 1)
                                                          <a class="dropdown-item" href="{{url('approve_forum',$forum->id)}}">
                                                             <em class="fa fa-check m-r-5" ></em> Approve
-                                                         </a>                                                       
+                                                         </a>
                                                           <a class="dropdown-item" href="{{url('edit_forums',$forum->id)}}">
                                                             <em class="fa fa-check m-r-5"></em> Edit
-                                                          </a> 
+                                                          </a>
                                                           <a class="dropdown-item" href="{{url('forums_delete',$forum->id)}}" onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');" >
                                                              <em class="fa fa-trash-o m-r-5"></em> Delete
-                                                          </a> 
-                                                        @endif                                                                                                          
-                                                       
+                                                          </a>
+                                                        @endif
+
                                                     </div>
                                                 </div>
                                             </td>
@@ -149,7 +150,7 @@
                                     @endforeach
                                 @else
                                  @foreach ($forum_user as $fo)
-                                        <tr>                                  
+                                        <tr>
                                             <td>{{$fo->id }}</td>
                                             <td>{{$fo->topic }}</td>
                                             <td>{{$fo->subtopic }}</td>
@@ -161,28 +162,28 @@
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                                         aria-expanded="false"><em class="material-icons">more_vert</em></a>
-                                                    <div class="dropdown-menu dropdown-menu-right">                                               
+                                                    <div class="dropdown-menu dropdown-menu-right">
                                                         @if (Auth::user()->is_admin == 1)
                                                          <a class="dropdown-item" href="{{url('approve_forum',$forum->id)}}">
                                                             <em class="fa fa-check m-r-5" ></em> Approve
                                                          </a>
-                                                         @endif                                                       
-                                                        
+                                                         @endif
+
                                                           <a class="dropdown-item" href="{{url('edit_forums',$fo->id)}}">
                                                             <em class="fa fa-pencil m-r-5"></em> Edit
-                                                          </a> 
+                                                          </a>
                                                           <a class="dropdown-item" href="{{url('forums_delete',$fo->id)}}" onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');" >
                                                              <em class="fa fa-trash-o m-r-5"></em> Delete
-                                                          </a> 
+                                                          </a>
                                                     </div>
                                                 </div>
-                                            </td>                                       
+                                            </td>
                                         </tr>
-                                     @endforeach                               
-                                    
+                                     @endforeach
+
 
                                   @endif
-                                      
+
 
                                         @if (Auth::user()->is_admin ==true)
                                           <div id="edit_forum" class="modal custom-modal fade" role="dialog">
@@ -201,13 +202,13 @@
                                                             @csrf
                                                             @method('PUT')
                                                             <div class="row">
-                            
+
                                                                 <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                                                     <div class="form-group">
                                                                         <label for="topic">{{ __('Topic') }}</label>
                                                                         <input id="topic" type="text" class="form-control @error('topic') is-invalid @enderror"
                                                                                name="topic" value="{{$forum->topic}}" autofocus>
-                            
+
                                                                         @error('topic')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
@@ -220,7 +221,7 @@
                                                                         <label for="subtopic">{{ __('Sub topic') }}</label>
                                                                         <input id="subtopic" type="text" class="form-control @error('subtopic') is-invalid @enderror"
                                                                                name="subtopic" value="{{ $forum->subtopic }}" autofocus>
-                            
+
                                                                         @error('subtopic')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
@@ -234,8 +235,8 @@
                                                                         <input id="image" type="file" class="form-control @error('image') is-invalid @enderror"
                                                                         name="image" value="{{ old('image') }}" autofocus>
                                                                         <img style="width:100px; height:70px; margin-top:20px;"  src="images/forum/{{$forum->image}}" class="img-responsive" alt="image">
-                                                                       
-                            
+
+
                                                                         @error('image')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
@@ -243,14 +244,14 @@
                                                                         @enderror
                                                                     </div>
                                                                 </div>
-                            
+
                                                                 <div class="col-lg-12 col-md-6 col-sm-12 col-xl-12">
                                                                     <div class="form-group">
                                                                         <label for="body">{{ __('Body') }}</label>
                                                                         <textarea id="body" rows="5" cols="60" type="text" class="form-control @error('body') is-invalid @enderror"
                                                                                name="body" autofocus>{{ $forum->body }}
                                                                         </textarea>
-                            
+
                                                                         @error('body')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
@@ -258,25 +259,25 @@
                                                                         @enderror
                                                                     </div>
                                                                 </div>
-                            
+
                                                             </div>
-                            
+
                                                             <div class="form-group text-center d-grid gap-2 col-6 mx-auto mt-2">
                                                                 <button type="submit" id="subit_Forums" class="btn btn-danger col-12">
                                                                      {{ __('Edit Post') }}
                                                                 </button>
                                                             </div>
-                            
+
                                                              </div>
-                            
-                            
-                            
+
+
+
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                         </div>  
-                                        @endif 
+                                         </div>
+                                        @endif
 
                                 </tbody>
                             </table>

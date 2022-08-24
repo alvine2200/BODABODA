@@ -1,12 +1,32 @@
   @extends('layouts.smart-hr')
   @section('content')
-        
+
         <div class="page-wrapper">
             @include('layouts.partials.flash')
 
             <div class="content container-fluid">
-                All users here
+                    
                 <div class="card">
+                    <div class="col-auto float-right ml-auto mb-3 mt-3">
+                        <a href="{{url('users_reports')}}" class="btn add-btn">
+                            <em class="fa fa-download"></em> Generate users report </a>
+                    </div> 
+                    
+                    <form class="card card-sm" action="{{url('search_box')}}" method="post">
+                        @csrf
+                        <div class="card-body row no-gutters align-items-center">
+                            <!--end of col-->
+                            <div class="col">
+                                <input name="field" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search by Fullname, Id Numner or Location">
+                            </div>
+                            <!--end of col-->
+                            <div class="col-auto">
+                                <button class="btn btn-lg btn-success" type="submit">Search</button>
+                            </div>
+                            <!--end of col-->
+                        </div>
+                    </form>                    
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped custom-table mb-0 datatable">
@@ -23,57 +43,52 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>                               
-                                    @foreach ($users as $user)                                    
-                                         <tr>    
+                                <tbody>
+                                    @foreach ($users as $user)
+                                         <tr>
                                             <td>{{$user->id}}</td>
                                             <td>{{$user->fullname}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->id_number}}</td>
-                                            <td>{{$user->phone}}</td>                                       
-                                            <td>{{$user->county}}</td> 
+                                            <td>{{$user->phone}}</td>
+                                            <td>{{$user->county}}</td>
                                             <td>{{$user->subcounty}}</td>
-                                            <td>{{$user->location}}</td>                                       
-                                                                                  
-                                            
+                                            <td>{{$user->location}}</td>
+
+
                                             {{-- @if ($item->status == 0)
                                                 <td><span class="badge badge-danger">Unapproved</span></td>
                                             @else
                                                 <td><span class="badge badge-success">Approved</span></td>
                                             @endif --}}
-    
-                                                                                        
-                                            
                                             <td class="">
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                                         aria-expanded="false"><em class="material-icons">more_vert</em></a>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        {{-- @if (Auth::user()->is_admin == 1)
-                                                         <a class="dropdown-item" href="#"><em
-                                                                class="fa fa-trash-o m-r-5"></em> Delete
-                                                            </a>
-                                                         @endif --}}
-                                                         {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_user" ><em
-                                                            class="fa fa-check m-r-5"></em> Edit
-                                                        </a> --}}
-                                                         {{-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_application" >
-                                                            <em class="fa fa-trash-o m-r-5"></em> Delete
-                                                        </a>   --}}
+                                                     @if (Auth::user()->is_admin == 1)                                                         
+                                                        <a class="dropdown-item" href="{{url('view_user',$user->id)}}"><em
+                                                            class="fa fa-eye-slash m-r-5"></em> View
+                                                        </a>
+                                                        <a class="dropdown-item" href="{{url('user_report',$user->id)}}"><em
+                                                             class="fa fa-download m-r-5"></em> Download User Report
+                                                        </a> 
+                                                    @endif
+                                                          
                                                          <form action="{{url('delete_user',$user->id)}}" method="post"
                                                             onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');">
                                                             @method('DELETE')
                                                             @csrf
                                                             <button type="submit" class="dropdown-item" href="#">
-                                                                <i class="fa fa-trash-o m-r-5"></i> Delete</button>
-                                                        </form> 
+                                                                <em class="fa fa-trash-o m-r-5"></em> Delete</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
 
                                         @endforeach
-    
+
                                         <div id="#" class="modal custom-modal fade" role="dialog">
                                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                                 <div class="modal-content">
@@ -125,10 +140,10 @@
                                                 </div>
                                             </div>
                                         </div>
-    
-                                        
-                                       
-    
+
+
+
+
                                 </tbody>
                             </table>
                         </div>

@@ -23,7 +23,7 @@ class MpesaController extends Controller
         else{
             $user_phone=Auth::user()->phone;
             $phone=str_replace('254', '0', $user_phone);
-            $transaction=Transaction::where('phone_number',$phone)->get();
+            $transaction=Transaction::where('phone_number',$user_phone)->get();
             return view('transaction.index', compact('transaction'));
         }
 
@@ -98,7 +98,7 @@ class MpesaController extends Controller
          $PartyA= "$user_phone";
          $PartyB= 174379;
          $PhoneNumber= $user_phone;
-         $CallBackURL= "https://7612-197-232-61-248.ngrok.io/api/mpesa_callback_url";
+         $CallBackURL= "https://5870-197-232-61-236.ngrok.io/api/mpesa_callback_url";
          $AccountReference ="BodaBoda License Payment";
          $TransactionDesc="BodaBoda Kenya Members";
          $Remarks="Thank you for transacting with us";

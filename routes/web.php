@@ -100,6 +100,10 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('view_application/{id}',[AdminController::class,'view_application']);
     Route::get('users_index',[AdminController::class,'users']);
     Route::delete('delete_user',[AdminController::class,'delete_users']);
+    Route::get('view_user/{id}',[AdminController::class,'view_user']);
+    Route::get('users_reports',[DompdfController::class,'user_report']);
+    Route::post('search_box',[HomeController::class,'search']);
+    Route::get('user_report/{id}',[DompdfController::class,'individual_report']);
 
 });
 

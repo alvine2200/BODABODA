@@ -7,7 +7,7 @@
             <meta name="description" content="GK">
         <meta name="keywords" content="GK">
         <meta name="robots" content="noindex, nofollow">
-        <title>@if(isset($title)){{$title, 'Agents'}} - @endif Agents </title>
+        <title> BodaBoda Association of Kenya </title>
 
 		@include('layouts.partials.common-style')
 
