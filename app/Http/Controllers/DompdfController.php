@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Application;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +42,8 @@ class DompdfController extends Controller
     {
         $user=User::findOrFail($id);
         $application=Application::where('user_id',$id)->first();
-        $pdf=Pdf::loadView('user.user_report', compact('user','application'));
+        $transaction=Transaction::where('phone_number',$user->phone)->latest()->first();
+        $pdf=Pdf::loadView('user.user_report', compact('user','application','transaction'));
         return $pdf->download('individual_report.pdf');
     }
 

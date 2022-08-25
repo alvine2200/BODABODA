@@ -39,7 +39,7 @@
         <th>County</th>
         <th>Subcounty</th>
         <th>Location</th>
-    </tr>  
+    </tr>
     <tr>
         <td>{{$user->fullname}}</td>
         <td>{{$user->email}}</td>
@@ -48,27 +48,42 @@
         <td>{{$user->county}}</td>
         <td>{{$user->subcounty}}</td>
         <td>{{$user->location}}</td>
-    </tr>  
+    </tr>
     </table>
 
-<h1 style="margin-top:30px;">Application Table</h1>
+<h1 style="margin-top:30px;">Application Report</h1>
 <table id="customers">
     <tr>
         <th>Application Number</th>
         <th>Transaction Status</th>
         <th>Driving School Status</th>
         <th>Generate_card</th>
-        
-    </tr>  
+    </tr>
     <tr>
-        <td>{{$application->application_number}}</td>
-        <td>{{$application->transaction_status}}</td>
-        <td>{{$application->driving_school_status}}</td> 
-        <td>{{$application->generate_card}}</td>
-             
-       
-    </tr>  
-    </table>
+        <td>{{$application?->application_number}}</td>
+        <td>{{$application?->transaction_status}}</td>
+        <td>{{$application?->driving_school_status}}</td>
+        <td>{{$application?->generate_card}}</td>
+
+    </tr>
+</table>
+
+<h1 style="margin-top:30px;">Transaction Report</h1>
+<table id="customers">
+    <tr>
+        <th>Amount</th>
+        <th>Mpesa Receipt Number</th>
+        <th>Phone Number</th>
+        <th>Admin Status</th>
+    </tr>
+    <tr>
+        <td>{{$transaction?->amount}}</td>
+        <td>{{$transaction?->referrence_number}}</td>
+        <td>{{$transaction?->phone_number}}</td>
+        <td>{{$transaction?->admin_status}}</td>
+    </tr>
+</table>
+
 </body>
 </html>
 
