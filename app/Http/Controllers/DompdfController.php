@@ -47,4 +47,11 @@ class DompdfController extends Controller
         return $pdf->download('individual_report.pdf');
     }
 
+    public function transaction_report()
+    {
+        $transactions=Transaction::all();
+        $pdf=Pdf::loadView('transaction.download',compact('transactions'));
+        return $pdf->download('transaction_report.pdf');
+    }
+
 }

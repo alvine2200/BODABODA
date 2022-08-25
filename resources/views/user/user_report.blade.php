@@ -37,7 +37,6 @@
         <th>Id Number</th>
         <th>Phone Number</th>
         <th>County</th>
-        <th>Subcounty</th>
         <th>Location</th>
     </tr>
     <tr>
@@ -46,7 +45,6 @@
         <td>{{$user->id_number}}</td>
         <td>{{$user->phone}}</td>
         <td>{{$user->county}}</td>
-        <td>{{$user->subcounty}}</td>
         <td>{{$user->location}}</td>
     </tr>
     </table>

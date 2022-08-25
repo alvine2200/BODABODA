@@ -6,6 +6,7 @@
             <div class="page-header">
             </div>
             <div class="card">
+                
                 <div class="card-body">
                     <div class="account-wrapper">
                         <p style="font-size:20px!important; font-weight:bold;"
@@ -34,6 +35,12 @@
             </div>
 
             <div class="card">
+
+                <div class="col-auto float-right ml-auto mb-3 mt-3">
+                    <a href="{{url('transaction_report')}}" class="btn add-btn">
+                        <em class="fa fa-download"></em> Generate Transaction Report </a>
+                </div> 
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-striped custom-table mb-0 datatable">

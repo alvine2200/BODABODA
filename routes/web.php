@@ -104,6 +104,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('users_reports',[DompdfController::class,'user_report']);
     Route::post('search_box',[HomeController::class,'search']);
     Route::get('user_report/{id}',[DompdfController::class,'individual_report']);
+    Route::get('transaction_report',[DompdfController::class,'transaction_report']);
 
 });
 
