@@ -151,13 +151,15 @@
                 </div>
             </div>
         </div>
+        
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         @if(Session::has('success'))
         <script>
             swal('User successfully deleted','done','success');
         </script>
         @endif
 
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+       
 
 
   @endsection

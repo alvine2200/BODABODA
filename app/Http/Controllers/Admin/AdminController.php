@@ -16,14 +16,16 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        $users = User::all()->count();
-        $queries= Support::all()->count();
-        $user_queries=Support::where('user_id',Auth::user()->id)->count();
-        $transactions=Transaction::all()->count();
-        $user_transactions=Transaction::where('phone_number',Auth::user()->phone)->count();
-        $application=Application::all()->count();
-        $user_application=Application::where('user_id',Auth::user()->id)->count();
-        return view('dashboards.admin',compact('users','queries','user_queries','application','user_application','transactions','user_transactions'));
+        $users = User::all();
+        $queries= Support::all();
+        $user_queries=Support::where('user_id',Auth::user()->id)->get();
+        $transactions=Transaction::all();
+        $user_transactions=Transaction::where('phone_number',Auth::user()->phone)->get();
+        $application=Application::all();
+        $user_application=Application::where('user_id',Auth::user()->id)->get();
+        $forums=Forum::all();
+        $user_forums=Forum::where('user_id',Auth::user()->id)->get();
+        return view('dashboards.admin',compact('users','forums','user_forums','queries','user_queries','application','user_application','transactions','user_transactions'));
     }
     public function get_all_applications()
     {

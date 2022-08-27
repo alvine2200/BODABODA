@@ -30,9 +30,9 @@
                             <div class="dash-widget-info">
                                 <span>
                                     @if (Auth::user()->is_admin==true)
-                                    <h3>{{$transactions}}</h3> 
+                                    <h3>{{$transactions->count()}}</h3> 
                                     @else
-                                    <h3>{{$user_transactions}}</h3>
+                                    <h3>{{$user_transactions->count()}}</h3>
                                     @endif Transactions
                                 </span>
                             </div>
@@ -46,9 +46,9 @@
                             <div class="dash-widget-info">
                                 <span>
                                     @if (Auth::user()->is_admin==true)
-                                    <h3>{{$application}}</h3>
+                                    <h3>{{$application->count()}}</h3>
                                     @else
-                                    <h3>{{$user_application}}</h3>
+                                    <h3>{{$user_application->count()}}</h3>
                                     @endif Applications
                                 </span>
 
@@ -65,7 +65,7 @@
 
                                 <span>
 
-                                    <h3>{{$users}}</h3>
+                                    <h3>{{$users->count()}}</h3>
                                         Users
                                 </span>
                             </div>
@@ -80,9 +80,9 @@
                             <div class="dash-widget-info">
                                 <span>
                                     @if (Auth::user()->is_admin==true)
-                                    <h3>{{$queries}}</h3>
+                                    <h3>{{$queries->count()}}</h3>
                                     @else
-                                    <h3>{{$user_queries}}</h3>
+                                    <h3>{{$user_queries->count()}}</h3>
                                     @endif Queries
                                 </span>
 
@@ -90,6 +90,57 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                    <div class="card dash-widget">
+                        <div class="card-body">
+                            <span class="dash-widget-icon"><em class="fa fa-question"></em></span>
+                            <div class="dash-widget-info">
+                                <span>
+                                    @if (Auth::user()->is_admin==true)
+                                    <h3>{{$forums->count()}}</h3>
+                                    @else
+                                    <h3>{{$user_forums->count()}}</h3>
+                                    @endif Forums
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
+                    <div class="card dash-widget">
+                        <div class="card-body">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
+                    <div class="card dash-widget">
+                        <div class="card-body">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
+                    <div class="card dash-widget">
+                        <div class="card-body">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
+                    <div class="card dash-widget">
+                        <div class="card-body">
+                            
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
         <!-- /Page Content -->

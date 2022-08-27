@@ -12,7 +12,7 @@
 		@include('layouts.partials.common-style')
 
     </head>
-    
+
     <body>
 
         <!-- Main Wrapper -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Authentication;
 
 use App\Models\User;
+use App\Models\Forum;
 use App\Models\Support;
 use App\Models\Application;
 use App\Models\Transaction;
@@ -26,14 +27,16 @@ class LoginController extends Controller
             $user = Auth::user();
             Auth::login($user);
 
-            $queries= Support::all()->count();
-            $user_queries=Support::where('user_id',Auth::user()->id)->count();
-            $users = User::all()->count();
-            $transactions=Transaction::all()->count();
-            $user_transactions=Transaction::where('phone_number',$user->phone)->count();
-            $application=Application::all()->count();
-            $user_application=Application::where('user_id',Auth::user()->id)->count();
-            return view('dashboards.admin',compact('users','queries','user_queries','application','user_application','transactions','user_transactions'));
+            $queries= Support::all();
+            $user_queries=Support::where('user_id',Auth::user()->id)->get();
+            $users = User::all();
+            $transactions=Transaction::all();
+            $user_transactions=Transaction::where('phone_number',$user->phone)->get();
+            $application=Application::all();
+            $user_application=Application::where('user_id',Auth::user()->id)->get();
+            $forums=Forum::all();
+            $user_forums=Forum::where('user_id',Auth::user()->id)->get();
+            return view('dashboards.admin',compact('users','forums','user_forums','queries','user_queries','application','user_application','transactions','user_transactions'));
         }
         else
         {

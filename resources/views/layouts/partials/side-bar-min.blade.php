@@ -126,7 +126,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{url('view_forums')}}"><em class="la la-comment"></em>
+                    <a href="{{url('view_forums')}}"><em class="fa fa-eye-slash"></em>
                         <span>View Forums </span>
                     </a>
                 </li>
@@ -140,6 +140,16 @@
                         <span>Support</span>
                     </a>
                 </li>
+
+                <li class="menu-title">
+                    <span>Reports</span>
+                </li>
+                <li>
+                    <a href="{{url('whole_report')}}"><em class="fa fa-book"></em>
+                        <span>Generate Reports</span>
+                    </a>
+                </li>
+
                 <li class="menu-title">
                     <span>Settings</span>
                 </li>

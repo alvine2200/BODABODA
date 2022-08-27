@@ -54,4 +54,13 @@ class DompdfController extends Controller
         return $pdf->download('transaction_report.pdf');
     }
 
+    public function whole_report()
+    {
+        $user=User::findOrFail(Auth::user()->id);
+        $application=Application::where('user_id',$user->id)->latest()->first();
+        $transaction=Transaction::where('phone_number',$user->phone)->latest()->first();
+        $pdf=Pdf::loadView('user.user_report', compact('user','application','transaction'));
+        return $pdf->download('Report.pdf');
+    }
+
 }

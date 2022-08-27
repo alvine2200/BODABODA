@@ -49,7 +49,7 @@
                  </div>
                  <div class="form-field d-flex align-items-center">
                     <span class="fas fa-phone"></span>
-                    <input type="number" name="phone" id="phone" placeholder="Phone Number">
+                    <input type="number" name="phone" id="phone" placeholder="Phone Number start with 2547...">
                 </div>
                  <div class="form-field d-flex align-items-center">
                      <span class="fa-solid fa-id-card"></span>

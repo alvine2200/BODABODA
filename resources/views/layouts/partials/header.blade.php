@@ -50,7 +50,7 @@
             </a>
 
             <div class="dropdown-menu">
-                {{-- 
+                {{--
              @if(isset(Auth::user()->employee))
 
                 <a class="dropdown-item" style=" " href="{{route('employees.show', Auth::user()->employee)}}">My Profile</a>
