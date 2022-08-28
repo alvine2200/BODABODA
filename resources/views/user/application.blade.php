@@ -72,7 +72,6 @@
                         <table class="table table-striped custom-table mb-0 datatable">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Application number</th>
                                     <th>Transaction status</th>
                                     <th>Driving School Status</th>
@@ -84,8 +83,6 @@
                             <tbody>
                                 @if($application)
                                      <tr>
-
-                                        <td>{{$application->id}}</td>
                                         <td>{{$application->application_number}}</td>
                                         <td>{{$application->transaction_status}}</td>
                                         <td>{{$application->driving_school_status}}</td>

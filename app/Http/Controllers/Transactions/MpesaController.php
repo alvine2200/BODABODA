@@ -116,7 +116,6 @@ class MpesaController extends Controller
          $TransactionDesc,
          $Remarks
      );
-
      return back()->with('success','Stk Push successfully initiated, check your phone to complete the payment');
 
    }

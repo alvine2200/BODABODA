@@ -98,7 +98,6 @@
                         <table class="table table-striped custom-table mb-0 datatable">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Application number</th>
                                     <th>Driving School Status</th>
                                     <th>Transaction status</th>
@@ -111,8 +110,6 @@
                                     @foreach ($applications as $application)
 
                                      <tr>
-
-                                        <td>{{$application->id}}</td>
                                         <td>{{$application->application_number}}</td>
 
                                         @if ($application->driving_school_status == 'pending')

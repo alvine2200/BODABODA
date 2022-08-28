@@ -14,16 +14,16 @@ class RiderController extends Controller
 {
     public function application()
     {
-        $application=Application::where('user_id',Auth::user()->id)->first();
-         $status=Transaction::where('phone_number',$application->users->phone)->first();
+        $application=Application::where('user_id',Auth::user()->id)->latest()->first();
+         $status=Transaction::where('phone_number',Auth::user()->phone)->latest()->first();
          if($status)
          {
             $application->transaction_status='paid';
              $application->update();
-            
+
          }
 
-         if($application->driving_school_status == 'pass' && $application->transaction_status == 'paid')
+         if($application?->driving_school_status == 'pass' && $application->transaction_status == 'paid')
          {
             $application->generate_card='Yes';
             $application->update();
