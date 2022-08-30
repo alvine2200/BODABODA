@@ -5,13 +5,13 @@
             @include('layouts.partials.flash')
 
             <div class="content container-fluid">
-                    
+
                 <div class="card">
                     <div class="col-auto float-right ml-auto mb-3 mt-3">
                         <a href="{{url('users_reports')}}" class="btn add-btn">
                             <em class="fa fa-download"></em> Generate users report </a>
-                    </div> 
-                    
+                    </div>
+
                     <form class="card card-sm" action="{{url('search_box')}}" method="post">
                         @csrf
                         <div class="card-body row no-gutters align-items-center">
@@ -25,7 +25,7 @@
                             </div>
                             <!--end of col-->
                         </div>
-                    </form>                    
+                    </form>
 
                     <div class="card-body">
                         <div class="table-responsive">
@@ -66,15 +66,15 @@
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                                         aria-expanded="false"><em class="material-icons">more_vert</em></a>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                     @if (Auth::user()->is_admin == 1)                                                         
+                                                     @if (Auth::user()->is_admin == 1)
                                                         <a class="dropdown-item" href="{{url('view_user',$user->id)}}"><em
                                                             class="fa fa-eye-slash m-r-5"></em> View
                                                         </a>
                                                         <a class="dropdown-item" href="{{url('user_report',$user->id)}}"><em
                                                              class="fa fa-download m-r-5"></em> Download User Report
-                                                        </a> 
+                                                        </a>
                                                     @endif
-                                                          
+
                                                          <form action="{{url('delete_user',$user->id)}}" method="post"
                                                             onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');">
                                                             @method('DELETE')
@@ -151,15 +151,15 @@
                 </div>
             </div>
         </div>
-        
+
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         @if(Session::has('success'))
         <script>
-            swal('User successfully deleted','done','success');
+            swal('User successfully deleted','Congratulations','success');
         </script>
         @endif
 
-       
+
 
 
   @endsection
