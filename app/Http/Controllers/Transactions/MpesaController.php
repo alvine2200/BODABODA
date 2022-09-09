@@ -98,7 +98,7 @@ class MpesaController extends Controller
          $PartyA= "$user_phone";
          $PartyB= 174379;
          $PhoneNumber= $user_phone;
-         $CallBackURL= "https://5870-197-232-61-236.ngrok.io/api/mpesa_callback_url";
+         $CallBackURL= "https://4dbd-197-232-61-220.ngrok.io/api/mpesa_callback_url";
          $AccountReference ="BodaBoda License Payment";
          $TransactionDesc="BodaBoda Kenya Members";
          $Remarks="Thank you for transacting with us";

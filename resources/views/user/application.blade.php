@@ -84,9 +84,21 @@
                                 @if($application)
                                      <tr>
                                         <td>{{$application->application_number}}</td>
-                                        <td>{{$application->transaction_status}}</td>
-                                        <td>{{$application->driving_school_status}}</td>
-                                        <td>{{$application->generate_card}}</td>
+                                        @if ($application['transaction_status'] == 'pending')
+                                         <td><span class="badge badge-danger">Pending</span></td>
+                                        @else
+                                         <td><span class="badge badge-success">Paid</span></td>
+                                        @endif
+                                        @if ($application['driving_school_status'] == 'pending')
+                                          <td><span class="badge badge-danger">Pending</span></td>
+                                        @else
+                                          <td><span class="badge badge-success">Passed</span></td>
+                                        @endif
+                                        @if ($application['generate_card'] == 'pending')
+                                          <td><span class="badge badge-danger">Pending</span></td>
+                                        @else
+                                          <td><span class="badge badge-success">Yes</span></td>
+                                        @endif
                                         <td class="">
                                             <div class="dropdown dropdown-action">
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"

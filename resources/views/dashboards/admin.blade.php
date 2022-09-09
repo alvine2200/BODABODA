@@ -93,7 +93,7 @@
                 <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                     <div class="card dash-widget">
                         <div class="card-body">
-                            <span class="dash-widget-icon"><em class="fa fa-question"></em></span>
+                            <span class="dash-widget-icon"><em class="fa fa-book"></em></span>
                             <div class="dash-widget-info">
                                 <span>
                                     @if (Auth::user()->is_admin==true)
