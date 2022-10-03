@@ -44,7 +44,7 @@ class LoginController extends Controller
         }
     }
 
-    public function logout_user()
+   public function logout_user()
     {
         $user=Auth::user();
         Auth::logout($user);

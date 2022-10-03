@@ -39,17 +39,13 @@
                                             <td>{{$fo->subject }}</td>
                                             <td>{{$fo->message }}</td>
                                             <td>{{$fo->time_sent }}</td>
-                                            <td>{{$fo->status }}</td>
-                                            <td>{{$fo->reply }}</td>
-                                            <td>{{$fo->time_replied }}</td>
-
-                                            {{-- @if ($item->status == 0)
-                                                <td><span class="badge badge-danger">Unapproved</span></td>
+                                             @if ($fo->status == 'pending')
+                                                <td><span class="badge badge-danger">Pending</span></td>
                                             @else
                                                 <td><span class="badge badge-success">Approved</span></td>
-                                            @endif --}}
-
-
+                                            @endif 
+                                            <td>{{$fo->reply }}</td>
+                                            <td>{{$fo->time_replied }}</td>
 
                                             <td class="">
                                                 <div class="dropdown dropdown-action">
