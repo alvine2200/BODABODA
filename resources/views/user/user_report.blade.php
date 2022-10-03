@@ -38,6 +38,7 @@
         <th>Phone Number</th>
         <th>County</th>
         <th>Location</th>
+        <th>Registration Date</th>
     </tr>
     <tr>
         <td>{{$user->fullname}}</td>
@@ -46,6 +47,7 @@
         <td>{{$user->phone}}</td>
         <td>{{$user->county}}</td>
         <td>{{$user->location}}</td>
+        <td>{{$user->created_at}}</td>
     </tr>
     </table>
 
@@ -73,12 +75,14 @@
         <th>Mpesa Receipt Number</th>
         <th>Phone Number</th>
         <th>Admin Status</th>
+        <th>Transaction date</th>
     </tr>
     <tr>
         <td>{{$transaction?->amount}}</td>
         <td>{{$transaction?->referrence_number}}</td>
         <td>{{$transaction?->phone_number}}</td>
         <td>{{$transaction?->admin_status}}</td>
+        <td>{{$transaction?->created_at}}</td>
     </tr>
 </table>
 

@@ -35,7 +35,7 @@
         <th>Mpesa Receipt Number</th>
         <th>Phone Number</th>
         <th>Status</th>
-        <th>Admin Status</th>
+        <th>Transaction date</th>
     </tr>
    
      @foreach ($transactions as $transaction)
@@ -44,12 +44,12 @@
            <td>{{$transaction?->referrence_number}}</td>
            <td>{{$transaction?->phone_number}}</td>
            <td>{{$transaction?->status}}</td>
-           <td>{{$transaction?->admin_status}}</td>            
+           <td>{{$transaction?->created_at}}</td>            
         </tr>
      @endforeach
 
      <tr style="padding-top:30px; padding-left:50px;">
-        <td>Total Amount Paid: <b> {{$transaction?->sum('amount')}} </b></td>
+        <td>Total Amount Paid: <b> {{ !empty($transaction) ? $transaction->sum('amount') : 'No transactions yet'}} </b></td>
         <td>Date: <b> {{now()->format('Y-m-d')}} </b></td>
      </tr>
         

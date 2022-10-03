@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{url('view_forums')}}"><em class="la la-comment"></em>
+                    <a href="{{url('view_forums')}}"><em class="fa fa-eye-slash"></em>
                         <span>View Forums </span>
                     </a>
                 </li>
