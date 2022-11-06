@@ -22,34 +22,33 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if(Auth::attempt($credentials))
-        {
+        if (Auth::attempt($credentials)) {
             $user = Auth::user();
             Auth::login($user);
-
-            $queries= Support::all();
-            $user_queries=Support::where('user_id',Auth::user()->id)->get();
-            $users = User::all();
-            $transactions=Transaction::all();
-            $user_transactions=Transaction::where('phone_number',$user->phone)->get();
-            $application=Application::all();
-            $user_application=Application::where('user_id',Auth::user()->id)->get();
-            $forums=Forum::all();
-            $user_forums=Forum::where('user_id',Auth::user()->id)->get();
-            return view('dashboards.admin',compact('users','forums','user_forums','queries','user_queries','application','user_application','transactions','user_transactions'));
-        }
-        else
-        {
-            return back()->with('errors','Login failed, try again');
+            if ($user->status ===  "activated") {
+                $queries = Support::all();
+                $user_queries = Support::where('user_id', Auth::user()->id)->get();
+                $users = User::all();
+                $transactions = Transaction::all();
+                $user_transactions = Transaction::where('phone_number', $user->phone)->get();
+                $application = Application::all();
+                $user_application = Application::where('user_id', Auth::user()->id)->get();
+                $forums = Forum::all();
+                $user_forums = Forum::where('user_id', Auth::user()->id)->get();
+                return view('dashboards.admin', compact('users', 'forums', 'user_forums', 'queries', 'user_queries', 'application', 'user_application', 'transactions', 'user_transactions'));
+            } else {
+                return back()->with('errors', 'Your status is deactivated, reach out to admin for help!');
+            }
+        } else {
+            return back()->with('errors', 'Login failed, try again');
         }
     }
 
-   public function logout_user()
+    public function logout_user()
     {
-        $user=Auth::user();
+        $user = Auth::user();
         Auth::logout($user);
 
         return redirect('');
     }
-
 }
