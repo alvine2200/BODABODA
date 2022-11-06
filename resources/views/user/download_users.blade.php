@@ -33,21 +33,19 @@
 <table id="customers">
   <tr>
     <th>Fullname</th>
-    <th>Email</th>
+    <th>Status</th>
     <th>Id Number</th>
     <th>Phone Number</th>
     <th>County</th>
-    <th>Subcounty</th>
     <th>Location</th>
   </tr>
   @foreach ($user as $us)
   <tr>
     <td>{{$us->fullname}}</td>
-    <td>{{$us->email}}</td>
+    <td>{{$us->status}}</td>
     <td>{{$us->id_number}}</td>
     <td>{{$us->phone}}</td>
     <td>{{$us->county}}</td>
-    <td>{{$us->subcounty}}</td>
     <td>{{$us->location}}</td>
   </tr>  
   @endforeach  

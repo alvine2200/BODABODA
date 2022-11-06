@@ -25,55 +25,32 @@
                                     <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                         <div class="form-group">
                                             <label for="topic">{{ __('Topic') }}</label>
-                                            <input id="topic" type="text" class="form-control @error('topic') is-invalid @enderror"
+                                            <input id="topic" type="text" class="form-control"
                                                    name="topic" value="{{ old('topic') }}" autofocus>
-
-                                            @error('topic')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                         <div class="form-group">
                                             <label for="subtopic">{{ __('Sub topic') }}</label>
-                                            <input id="subtopic" type="text" class="form-control @error('subtopic') is-invalid @enderror"
+                                            <input id="subtopic" type="text" class="form-control"
                                                    name="subtopic" value="{{ old('subtopic') }}" autofocus>
-
-                                            @error('subtopic')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                         <div class="form-group">
                                             <label for="image">{{ __('Image') }}</label>
-                                            <input id="image" type="file" class="form-control @error('image') is-invalid @enderror"
+                                            <input id="image" type="file" class="form-control "
                                                    name="image" value="{{ old('image') }}" autofocus>
-
-                                            @error('image')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12 col-md-6 col-sm-12 col-xl-12">
                                         <div class="form-group">
                                             <label for="body">{{ __('Body') }}</label>
-                                            <textarea id="body" rows="5" cols="60" type="text" class="form-control @error('body') is-invalid @enderror"
+                                            <textarea id="body" rows="5" cols="60" type="text" class="form-control"
                                                    name="body" value="{{ old('body') }}" autofocus>
                                             </textarea>
 
-                                            @error('body')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
                                         </div>
                                     </div>
 
@@ -198,7 +175,7 @@
                                                     </div>
 
                                                     <div class="modal-body">
-                                                        <form method="POST" action="{{url('forums',$forum->id)}}" method="POST" enctype="multipart/form-data" >
+                                                        <form method="POST" action="{{url('forums',$forum?->id)}}" method="POST" enctype="multipart/form-data" >
                                                             @csrf
                                                             @method('PUT')
                                                             <div class="row">
@@ -206,57 +183,33 @@
                                                                 <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                                                     <div class="form-group">
                                                                         <label for="topic">{{ __('Topic') }}</label>
-                                                                        <input id="topic" type="text" class="form-control @error('topic') is-invalid @enderror"
+                                                                        <input id="topic" type="text" class="form-control "
                                                                                name="topic" value="{{$forum->topic}}" autofocus>
 
-                                                                        @error('topic')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                                                     <div class="form-group">
                                                                         <label for="subtopic">{{ __('Sub topic') }}</label>
-                                                                        <input id="subtopic" type="text" class="form-control @error('subtopic') is-invalid @enderror"
+                                                                        <input id="subtopic" type="text" class="form-control "
                                                                                name="subtopic" value="{{ $forum->subtopic }}" autofocus>
-
-                                                                        @error('subtopic')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                                                     <div class="form-group">
                                                                         <label for="image">{{ __('Image') }}</label>
-                                                                        <input id="image" type="file" class="form-control @error('image') is-invalid @enderror"
+                                                                        <input id="image" type="file" class="form-control" 
                                                                         name="image" value="{{ old('image') }}" autofocus>
                                                                         <img style="width:100px; height:70px; margin-top:20px;"  src="images/forum/{{$forum->image}}" class="img-responsive" alt="image">
-
-
-                                                                        @error('image')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="col-lg-12 col-md-6 col-sm-12 col-xl-12">
                                                                     <div class="form-group">
                                                                         <label for="body">{{ __('Body') }}</label>
-                                                                        <textarea id="body" rows="5" cols="60" type="text" class="form-control @error('body') is-invalid @enderror"
+                                                                        <textarea id="body" rows="5" cols="60" type="text" class="form-control"
                                                                                name="body" autofocus>{{ $forum->body }}
                                                                         </textarea>
-
-                                                                        @error('body')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
 

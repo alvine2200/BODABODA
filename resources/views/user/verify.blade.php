@@ -160,10 +160,14 @@
     swal("Rider Not Found","fail","error");
 </script>
 @endif
-
 @if(session()->has('success'))
 <script>
     swal("Rider Found","Enjoy your ride","success");
+</script>
+@endif
+@if(session()->has('deactivated'))
+<script>
+    swal("Rider is banned until further notice","Do not board","error");
 </script>
 @endif
 

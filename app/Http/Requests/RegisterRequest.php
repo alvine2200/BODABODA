@@ -24,17 +24,17 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullname'=> 'required|string|min:5|max:30',
-            'username'=> 'required|string|regex:/(^([a-zA-z]+)(\d+)?$)/u',
-            'id_number'=> 'required|string',
-            'county'=> 'required|string',
-            'subcounty'=> 'required|string',
-            'location'=> 'required|string',
-            'district'=> 'required|string',
-            'village'=> 'required|string',
-            'email'=> 'required|email|unique:users,email',
-            'phone'=> 'required|string|min:10',
-            'password'=> 'required|confirmed|min:6',
+            'fullname' => 'required|string|min:5|max:30',
+            'username' => 'required|string|min:5|regex:/(^([a-zA-z]+)(\d+)?$)/u',
+            'id_number' => 'required|min:8|max:9',
+            'county' => 'required|string|max:15',
+            'subcounty' => 'required|string|max:15',
+            'location' => 'required|string|max:15',
+            'district' => 'required|string|max:15',
+            'village' => 'required|string|max:15',
+            'email' => 'required|email|unique:users,email',
+            'phone' => 'required|string|min:10|max:16|unique:users,phone',
+            'password' => 'required|confirmed|min:6',
         ];
     }
 }
