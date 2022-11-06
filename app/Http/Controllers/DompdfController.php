@@ -14,53 +14,52 @@ class DompdfController extends Controller
 {
     public function index($id)
     {
-        $user=User::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        $application=Application::with(['users'])
-                                ->where('user_id',$user->id)->first();
+        $application = Application::with(['users'])
+            ->where('user_id', $user->id)->first();
 
-        $pdf=Pdf::loadView('license.pdf',compact('application'));
+        $pdf = Pdf::loadView('license.pdf', compact('application'));
         return $pdf->download('license.pdf');
     }
 
     public function show($id)
     {
-        $user=User::findOrFail($id);
-        $application=Application::where('user_id',$user->id)->first();
-        $pdf=Pdf::loadView('license.pdf',compact('user','application'));
+        $user = User::findOrFail($id);
+        $application = Application::where('user_id', $user->id)->first();
+        $pdf = Pdf::loadView('license.pdf', compact('user', 'application'));
         return $pdf->stream();
     }
 
     public function user_report()
     {
-        $user=User::all();
-        $pdf=Pdf::loadView('user.download_users', compact('user'));
+        $user = User::all();
+        $pdf = Pdf::loadView('user.download_users', compact('user'));
         return $pdf->download('users_reports.pdf');
     }
 
     public function individual_report($id)
     {
-        $user=User::findOrFail($id);
-        $application=Application::where('user_id',$id)->first();
-        $transaction=Transaction::where('phone_number',$user->phone)->latest()->first();
-        $pdf=Pdf::loadView('user.user_report', compact('user','application','transaction'));
+        $user = User::findOrFail($id);
+        $application = Application::where('user_id', $id)->first();
+        $transaction = Transaction::where('phone_number', $user->phone)->latest()->first();
+        $pdf = Pdf::loadView('user.user_report', compact('user', 'application', 'transaction'));
         return $pdf->download('individual_report.pdf');
     }
 
     public function transaction_report()
     {
-        $transactions=Transaction::all();
-        $pdf=Pdf::loadView('transaction.download',compact('transactions'));
+        $transactions = Transaction::all();
+        $pdf = Pdf::loadView('transaction.download', compact('transactions'));
         return $pdf->download('transaction_report.pdf');
     }
 
     public function whole_report()
     {
-        $user=User::findOrFail(Auth::user()->id);
-        $application=Application::where('user_id',$user->id)->latest()->first();
-        $transaction=Transaction::where('phone_number',$user->phone)->latest()->first();
-        $pdf=Pdf::loadView('user.user_report', compact('user','application','transaction'));
+        $user = User::findOrFail(Auth::user()->id);
+        $application = Application::where('user_id', $user->id)->latest()->first();
+        $transaction = Transaction::where('phone_number', $user->phone)->latest()->first();
+        $pdf = Pdf::loadView('user.user_report', compact('user', 'application', 'transaction'));
         return $pdf->download('Report.pdf');
     }
-
 }

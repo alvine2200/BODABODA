@@ -95,7 +95,7 @@ class MpesaController extends Controller
         $PartyA = "$user_phone";
         $PartyB = 174379;
         $PhoneNumber = $user_phone;
-        $CallBackURL = "https://4123-197-232-61-225.ngrok.io/api/mpesa_callback_url";
+        $CallBackURL = "https://48b0-197-232-61-241.eu.ngrok.io/api/mpesa_callback_url";
         $AccountReference = "BodaBoda License Payment";
         $TransactionDesc = "BodaBoda Kenya Members";
         $Remarks = "Thank you for transacting with us";
@@ -114,6 +114,7 @@ class MpesaController extends Controller
             $TransactionDesc,
             $Remarks
         );
+
         return back()->with('success', 'Stk Push successfully initiated, check your phone to complete the payment');
     }
 

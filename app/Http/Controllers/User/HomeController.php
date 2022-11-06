@@ -36,15 +36,10 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'fullname' => 'required|string',
-            'id_number' => 'required|integer',
-            'location' => 'required|string',
-            'county' => 'required|string',
-            'subcounty' => 'required|string',
-            'location' => 'required|string',
+            'field' => 'required|string'
         ]);
         if ($validator->fails()) {
-            return back()->with('errors', $validator->errors()->first());
+            return back()->with('error', $validator->errors()->first());
         }
         $users = User::where('fullname', 'like', '%' . $request->field . '%')
             ->orWhere('id_number', 'like', '%' . $request->field . '%')

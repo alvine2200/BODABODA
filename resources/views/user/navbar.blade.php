@@ -16,6 +16,11 @@
                 {{Session::get('success')}}
             </div>
         @endif
+        @if (Session::has('deactivated'))
+            <div style="color:red;" class="sucess">
+                {{Session::get('success')}}
+            </div>
+        @endif
         
         <span class="error">
             @if ($errors->any())

@@ -42,9 +42,6 @@
                                         <label for="driving_school_certificate">{{ __('Driving School Certificate') }}</label>
                                         <input id="driving_school_certificate" type="file" class="form-control" name="driving_school_certificate"
                                          value="{{ old('driving_school_certificate') }}" autofocus>
-
-
-
                                     </div>
                                 </div>
 

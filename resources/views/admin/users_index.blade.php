@@ -37,6 +37,7 @@
                                         <th>Email</th>
                                         <th>Id Number</th>
                                         <th>Phone Number</th>
+                                        <th>Status</th>
                                         <th>County</th>
                                         <th>Subcounty</th>
                                         <th>Location</th>
@@ -51,16 +52,17 @@
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->id_number}}</td>
                                             <td>{{$user->phone}}</td>
+                                             @if ($user->status === "deactivated")
+                                                <td><span class="badge badge-danger m-2">Deactivated</span></td>
+                                            @else
+                                                <td><span class="badge badge-info m-3">Active</span></td>
+                                            @endif
                                             <td>{{$user->county}}</td>
                                             <td>{{$user->subcounty}}</td>
                                             <td>{{$user->location}}</td>
 
 
-                                            {{-- @if ($item->status == 0)
-                                                <td><span class="badge badge-danger">Unapproved</span></td>
-                                            @else
-                                                <td><span class="badge badge-success">Approved</span></td>
-                                            @endif --}}
+                                            
                                             <td class="">
                                                 <div class="dropdown dropdown-action">
                                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
@@ -73,15 +75,21 @@
                                                         <a class="dropdown-item" href="{{url('user_report',$user->id)}}"><em
                                                              class="fa fa-download m-r-5"></em> Download User Report
                                                         </a>
+                                                        <a class="dropdown-item" href="{{url('activate',$user->id)}}"><em
+                                                             class="fa fa-check m-r-5"></em> Activate
+                                                        </a>
+                                                        <a class="dropdown-item" href="{{url('deactivate',$user->id)}}"><em
+                                                             class="fa fa-trash-o m-r-5"></em> Deactivate
+                                                        </a>
                                                     @endif
 
-                                                         <form action="{{url('delete_user',$user->id)}}" method="post"
+                                                         {{-- <form action="{{url('delete_user',$user->id)}}" method="post"
                                                             onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');">
                                                             @method('DELETE')
                                                             @csrf
                                                             <button type="submit" class="dropdown-item" href="#">
                                                                 <em class="fa fa-trash-o m-r-5"></em> Delete</button>
-                                                        </form>
+                                                        </form> --}}
                                                     </div>
                                                 </div>
                                             </td>

@@ -68,7 +68,7 @@
                 <div class="content">
                     <span>BodaBoda Association of Kenya</span>
                     <h3>Kenyan BodaBoda Members</h3>
-                    <p> Welcome To BAK, Register, apply for a license.  <p>
+                    <p> Welcome To BAK, Register, apply for a license. <p>
                     <a href="#" class="btn">Contact Us</a>
                 </div>
                 <div class="image">

@@ -32,7 +32,7 @@
             </div>
             @endif
 
-            <div class="text-center mt-4 name"> Are you a rider? Register today!</div>
+            <div style="color:brown;" class="text-center mt-4 name "> Are you a rider? Register today!</div>
             <form action="/post_user" method="post" class="p-3 mt-3">
                 @csrf
                 <div class="form-field d-flex align-items-center">
@@ -41,7 +41,7 @@
                  </div>
                  <div class="form-field d-flex align-items-center">
                      <span class="fas fa-person"></span>
-                     <input type="text" name="username" id="username" placeholder="Username">
+                     <input type="text" name="username" id="username" placeholder="Enter Username">
                  </div>
                  <div class="form-field d-flex align-items-center">
                      <span class="fas fa-envelope"></span>
@@ -85,10 +85,10 @@
                     <input type="password" name="password_confirmation" id="pwd_confm" placeholder="Password Confirmation">
                  </div>
 
-                    <button type="submit"  class="btn mt-3">Register</button>
+                    <button type="submit" style="background: brown; !importat;" class="btn mt-3">Register</button>
 
             </form>
-            <div class="text-center fs-6">  <a href="{{url('login')}}">Sign in</a> or  <a href="{{url('/')}}">Home</a> </div>
+            <div class="text-center fs-6">  <a style="color: brown;" href="{{url('login')}}">Sign in</a> or  <a style="color: brown;" href="{{url('/')}}">Home</a> </div>
 
         </div>
     </div>

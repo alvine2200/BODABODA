@@ -5,16 +5,7 @@
         <div class="mx-auto ">
             <div class="page-header">
                 <div class="row align-items-center">
-                    <div class="col">
-                        {{-- <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index"></a></li>
-                            <li class="breadcrumb-item active">Destinations</li>
-                        </ul> --}}
-                    </div>
-                    {{-- <div class="col-auto float-right ml-auto">
-                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#create_accomodation"><em
-                                class="fa fa-plus"></em> Add Accommodation</a>
-                    </div>  --}}
+                    
                 </div>
             </div>
 
@@ -24,12 +15,10 @@
                         <p style="font-size:20px!important; font-weight:bold;"
                          class="account-subtitle fw-bold display-2">License Application</p>
                         </p>
-                        {{-- <h3 class="account-title">Agents</h3>  --}}
-                        {{-- <h3 class="account-title">Register</h3> --}}
+                        
                         <p class="float-start">Apply for a License</p>
                         <hr  class="mb-5">
-                        <!-- Account Form -->
-                        {{-- <form method="POST" action="{{ route('register') }}"> --}}
+                       
                         <form method="POST" action="{{url('post_application')}}" id="register_form">
                             @csrf
                             <div class="row">
@@ -37,40 +26,27 @@
                                 <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="national_id_copy">{{ __('National Id Copy') }}</label>
-                                        <input id="national_id_copy" type="file" class="form-control @error('national_id_copy') is-invalid @enderror"
+                                        <input id="national_id_copy" type="file" class="form-control"
                                                name="national_id_copy" value="{{ old('national_id_copy') }}" autofocus>
 
-                                        @error('national_id_copy')
-                                        <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                        @enderror
-                                    </div>
+                                        </div>
                                 </div>
 
                                 <div class="col-lg-12 col-md-6 col-sm-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="dob">{{ __(' Date Of Birth') }}</label>
-                                        <input id="date" type="date" class="form-control @error('dob') is-invalid @enderror"
+                                        <input id="date" type="date" class="form-control"
                                                name="dob" value="{{ old('email') }}" autofocus>
-                                        @error('dob')
-                                        <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                        @enderror
+                                       
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6">
                                     <div class="form-group">
                                         <label for="driving_school_certificate">{{ __('Driving School Certificate') }}</label>
-                                        <input id="driving_school_certificate" type="file" class="form-control @error('driving_school_certificate') is-invalid @enderror"
+                                        <input id="driving_school_certificate" type="file" class="form-control"
                                                name="driving_school_certificate" value="{{ old('driving_school_certificate') }}" autofocus>
-                                        @error('driving_school_certificate')
-                                        <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                        @enderror
+                                        
                                     </div>
                                 </div>
 
@@ -155,75 +131,12 @@
                                                             class="fa fa-check m-r-5"></em> Approve Generate Card
                                                      </a>
                                                      @endif
-                                                    {{-- <a class="dropdown-item" href="{{url('delete_application',$application->id)}}" data-toggle="modal" data-target="#edit_application" ><em
-                                                        class="fa fa-trash-o m-r-5"></em> Delete
-                                                    </a>  --}}
-                                                    {{-- <form action="/delete_application',$application->id" method="post"
-                                                        onsubmit="return confirm('You are about to delete this record. This action is irrevesible and the data cannot be recovered! \nDo you wish to continue?');">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button type="submit" class="dropdown-item" href="#">
-                                                            <em class="fa fa-trash-o m-r-5"></em> Delete</button>
-                                                    </form> --}}
+                                                   
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
                                     @endforeach
-
-
-                                    <div id="#" class="modal custom-modal fade" role="dialog">
-                                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Edit Agent</h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="#"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('put')
-                                                        <div class="form-group">
-                                                            <label class="col-form-label">Name <span
-                                                                    class="text-danger">*</span></label>
-                                                            <input class="form-control @error('email') is-invalid @enderror"
-                                                                value="#" required type="text"
-                                                                name="name">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-form-label">Name <span
-                                                                    class="text-danger">*</span></label>
-                                                            <input class="form-control @error('email') is-invalid @enderror"
-                                                                value="#" required type="text"
-                                                                name="name">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-form-label">Name <span
-                                                                    class="text-danger">*</span></label>
-                                                            <input class="form-control @error('email') is-invalid @enderror"
-                                                                value="#" required type="text"
-                                                                name="name">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="col-form-label">Name <span
-                                                                    class="text-danger">*</span></label>
-                                                            <input class="form-control @error('email') is-invalid @enderror"
-                                                                value="#" required type="text"
-                                                                name="name">
-                                                        </div>
-                                                        <div class="submit-section">
-                                                            <button class="btn btn-primary submit-btn col-12">Save</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
 
                             </tbody>
                         </table>
