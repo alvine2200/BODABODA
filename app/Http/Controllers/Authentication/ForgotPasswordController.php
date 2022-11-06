@@ -51,8 +51,6 @@ class ForgotPasswordController extends Controller
             $message->subject('Reset Password');
         });
 
-        dd($mail);
-
         return back()->with('success', 'We have emailed your password reset link!');
     }
 
