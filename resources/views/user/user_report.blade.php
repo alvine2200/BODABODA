@@ -28,13 +28,14 @@
 </head>
 <body>
 
-<h1>User Report Table</h1>
+<h1 style="margin-top:30px;">Bodaboda Management system</h1>
+<h1 style="margin-top: 10px;">Date: {{now()}}</h1>
+<h1 style="margin-top: 10px;">User Report</h1>
 
     <table id="customers">
     <tr>
         <th>Fullname</th>
         <th>Email</th>
-        <th>Id Number</th>
         <th>Phone Number</th>
         <th>County</th>
         <th>Location</th>
@@ -43,7 +44,6 @@
     <tr>
         <td>{{$user->fullname}}</td>
         <td>{{$user->email}}</td>
-        <td>{{$user->id_number}}</td>
         <td>{{$user->phone}}</td>
         <td>{{$user->county}}</td>
         <td>{{$user->location}}</td>
@@ -74,14 +74,12 @@
         <th>Amount</th>
         <th>Mpesa Receipt Number</th>
         <th>Phone Number</th>
-        <th>Admin Status</th>
         <th>Transaction date</th>
     </tr>
     <tr>
         <td>{{$transaction?->amount}}</td>
         <td>{{$transaction?->referrence_number}}</td>
         <td>{{$transaction?->phone_number}}</td>
-        <td>{{$transaction?->admin_status}}</td>
         <td>{{$transaction?->created_at}}</td>
     </tr>
 </table>

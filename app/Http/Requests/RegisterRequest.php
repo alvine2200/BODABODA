@@ -24,7 +24,7 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullname' => 'required|string|min:5|max:30',
+            'fullname' => 'required|string|min:5|max:15',
             'username' => 'required|string|min:5|regex:/(^([a-zA-z]+)(\d+)?$)/u',
             'id_number' => 'required|min:8|max:9',
             'county' => 'required|string|max:15',

@@ -27,8 +27,9 @@
 </style>
 </head>
 <body>
-
-<h1 style="margin-top:30px;">Transaction Report</h1>
+<h1 style="margin-top:30px;">Bodaboda Management system</h1>
+<h1>Date: {{now()}}</h1>
+<h1 style="margin-top:10px;">Transaction Report</h1>
 <table id="customers">
     <tr>
         <th>Amount</th>

@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::post('mpesa_callback_url',[MpesaController::class,'mpesaResponse']);
+Route::post('mpesa_callback_url', [MpesaController::class, 'mpesaResponse']);

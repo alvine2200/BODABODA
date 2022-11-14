@@ -29,11 +29,13 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
-    public function ForgetPassword() {
+    public function ForgetPassword()
+    {
         return view('password.forgot_password');
     }
 
-    public function ForgetPasswordStore(Request $request) {
+    public function ForgetPasswordStore(Request $request)
+    {
         $request->validate([
             'email' => 'required|email|exists:users',
         ]);
@@ -45,22 +47,22 @@ class ForgotPasswordController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-       $mail= Mail::send('auth.forget-password-email', ['token' => $token], function($message) use($request){
+        $mail = Mail::send('auth.forget-password-email', ['token' => $token], function ($message) use ($request) {
             $message->to($request->email);
             $message->from(env('MAIL_FROM_ADDRESS'), env('APP_NAME'));
             $message->subject('Reset Password');
         });
 
-        dd($mail);
-
         return back()->with('success', 'We have emailed your password reset link!');
     }
 
-    public function ResetPassword($token) {
+    public function ResetPassword($token)
+    {
         return view('auth.forget-password-link', ['token' => $token]);
     }
 
-    public function ResetPasswordStore(Request $request) {
+    public function ResetPasswordStore(Request $request)
+    {
         $request->validate([
             'email' => 'required|email|exists:users',
             'password' => 'required|string|min:6|confirmed',
@@ -69,16 +71,15 @@ class ForgotPasswordController extends Controller
 
         $update = DB::table('password_resets')->where(['email' => $request->email, 'token' => $request->token])->first();
 
-        if(!$update){
+        if (!$update) {
             return back()->withInput()->with('error', 'Invalid token!');
         }
 
         $user = User::where('email', $request->email)->update(['password' => Hash::make($request->password)]);
 
         // Delete password_resets record
-        DB::table('password_resets')->where(['email'=> $request->email])->delete();
+        DB::table('password_resets')->where(['email' => $request->email])->delete();
 
         return redirect('login')->with('success', 'Your password has been successfully changed!');
     }
 }
-

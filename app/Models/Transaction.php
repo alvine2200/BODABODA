@@ -10,9 +10,9 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    protected $table='transactions';
+    protected $table = 'transactions';
 
-    protected $fillable=[
+    protected $fillable = [
         'application_number',
         'user_id',
         'amount',
@@ -24,14 +24,13 @@ class Transaction extends Model
         'date',
     ];
 
-    public function applications() :BelongsTo
+    public function applications(): BelongsTo
     {
-        return $this->belongsTo(Application::class,'application_number','id');
+        return $this->belongsTo(Application::class, 'application_number', 'id');
     }
 
-    public function users() :BelongsTo
+    public function users(): BelongsTo
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
-
 }
