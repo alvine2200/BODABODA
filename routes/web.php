@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DompdfController;
 use App\Http\Controllers\ModelsController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\RiderController;
@@ -42,6 +43,7 @@ Route::get('verify', [VerifyRiderController::class, 'index']);
 Route::post('search', [VerifyRiderController::class, 'search']);
 Route::any('contact', [ModelsController::class, 'contact']);
 Route::post('contact_form', [ModelsController::class, 'contact_form']);
+Route::get('report', [ReportController::class, 'index']);
 
 Route::get('forget-password', [ForgotPasswordController::class, 'ForgetPassword'])->name('ForgetPasswordGet');
 Route::post('forget-password', [ForgotPasswordController::class, 'ForgetPasswordStore'])->name('ForgetPasswordPost');

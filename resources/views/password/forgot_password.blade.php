@@ -28,20 +28,19 @@
            @endif
 
 
-            <div class="text-center mt-4 name"> Forgot Your Password?</div>
-            <div class="text-center mt-3 name"> Dont worry, use registered email</div>
+            <div class="text-center mt-4 name" style="color:brown;"> Forgot Your Password?</div>
+            <div class="text-center mt-3 name" style="color:brown;"> Dont worry, use registered email</div>
             <form action="{{ route('ForgetPasswordPost') }}" method="post" class="p-3 mt-3">
                 @csrf
                 <div class="form-field d-flex align-items-center">
                      <span class="fas fa-envelope"></span> <input type="email" name="email" id="userName" placeholder="Email">
-                 </div>
-                
+                </div>                
 
-                    <button type="submit" name="login" class="btn mt-3">Send Mail </button>
+                    <button type="submit" name="login" class="btn btn-info mt-3" style="background:brown;">Send Mail </button>
 
             </form>
-            <div class="text-center fs-6"><a href="{{url('register')}}">Sign up</a> or <a href="{{url('login')}}">Sign In</a> </div>
-            <div class="text-center fs-6 mt-3"> <a href="{{url('/')}}">Home</a>
+            <div class="text-center fs-6"><a href="{{url('register')}}" style="color:brown;">Sign up</a> or <a href="{{url('login')}}" style="color:brown;">Sign In</a> </div>
+            <div class="text-center fs-6 mt-3"> <a href="{{url('/')}}" style="color:brown;">Home</a>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-v4-rtl/4.3.1-0/js/bootstrap.min.js" integrity="sha512-OUTo0k3tQaY48oUR7082t08hnB63qZ/LmOOUma44cJ8zVFEd/1fpsQQtKOErwbQvUzRiTg1RIxKChJ/yV2Cs7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -4,8 +4,9 @@
 		<a href="{{url('/')}}"  class="logo"><img src="images/bak logo.png" alt="logo"><p>BAK</p></a>
 
 		<nav class="navbar">
-			<a class="active" href="{{ url('/')}}">home</a>
+			<a href="{{ url('/')}}" class="active" >home</a>
             <a href="{{url('verify')}}">Verify Riders</a>
+            {{-- <a href="{{url('report')}}">Report Rider</a> --}}
 			<a href="{{url('contact')}}">Contact Us</a>
 			<a href="{{url('login')}}">Login</a>
 			<a href="{{url('register')}}">Register</a>
